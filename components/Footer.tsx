@@ -15,7 +15,6 @@ const COLUMNS = [
       { label: "Network", href: "#network" },
       { label: "Technology", href: "#technology" },
       { label: "Getting started", href: "#onboarding" },
-      { label: "Our founder", href: "#founder" },
     ],
   },
   {

@@ -10,7 +10,6 @@ import Integrations from "@/components/Integrations";
 import Technology from "@/components/Technology";
 import Onboarding from "@/components/Onboarding";
 import TrustedBy from "@/components/TrustedBy";
-import Founder from "@/components/Founder";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -31,7 +30,6 @@ export default function Page() {
         <Integrations />
         <Technology />
         <Onboarding />
-        <Founder />
         <FAQ />
         <FinalCTA />
       </main>
