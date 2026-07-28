@@ -118,20 +118,9 @@ export default function TrustedBy() {
         </h2>
       </div>
 
-      <div className="mt-14 space-y-8">
-        <div>
-          <p className="u-eyebrow mx-auto mb-5 max-w-6xl px-5 text-muted sm:px-8">
-            Clients we deliver for
-          </p>
-          <Marquee items={CLIENTS} duration={28} />
-        </div>
-
-        <div>
-          <p className="u-eyebrow mx-auto mb-5 max-w-6xl px-5 text-muted sm:px-8">
-            Platforms we integrate with
-          </p>
-          <Marquee items={INTEGRATIONS} duration={32} reverse />
-        </div>
+      <div className="mt-14 space-y-10">
+        <Marquee items={CLIENTS} duration={28} />
+        <Marquee items={INTEGRATIONS} duration={32} reverse />
       </div>
     </section>
   );
