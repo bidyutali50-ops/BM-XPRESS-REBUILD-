@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
 import DispatchPanel from "./DispatchPanel";
+import SpecularButton from "./SpecularButton";
 
 const PROOF = [
   { v: "143", l: "Riders on payroll" },
@@ -12,6 +14,7 @@ const PROOF = [
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const router = useRouter();
 
   useGSAP(
     () => {
@@ -85,12 +88,23 @@ export default function Hero() {
               </p>
 
               <div className="hero-fade mt-9 flex flex-wrap items-center gap-3">
-                <a
-                  href="/quote"
-                  className="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper transition-transform duration-200 hover:-translate-y-0.5"
+                <SpecularButton
+                  size="md"
+                  radius={999}
+                  tint="#0e1319"
+                  tintOpacity={1}
+                  textColor="#f2f4f1"
+                  lineColor="#2f9e6b"
+                  baseColor="#1a222c"
+                  intensity={1.25}
+                  shineSize={9}
+                  shineFade={32}
+                  thickness={1.2}
+                  proximity={280}
+                  onClick={() => router.push("/quote")}
                 >
                   Get a quote
-                </a>
+                </SpecularButton>
                 <a
                   href="#services"
                   className="rounded-full border border-ink/15 bg-white/50 px-7 py-3.5 text-sm font-medium transition-colors duration-200 hover:border-ink/40"
