@@ -2,6 +2,8 @@
 
 import { useReveal } from "@/lib/useReveal";
 
+const TINTS = ["transit", "delivered", "assigned", "transit", "delivered", "assigned"];
+
 const INDUSTRIES = [
   { name: "D2C brands", note: "Same-day in the city your customers actually live in." },
   { name: "Grocery and q-commerce", note: "Dark-store dispatch with batching and slot windows." },
@@ -15,7 +17,7 @@ export default function Industries() {
   const scope = useReveal<HTMLElement>(0.06);
 
   return (
-    <section id="industries" ref={scope} className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section id="industries" ref={scope} className="u-defer mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
       <p data-reveal className="u-eyebrow">
         Who we move for
       </p>
@@ -24,8 +26,13 @@ export default function Industries() {
       </h2>
 
       <div className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-        {INDUSTRIES.map((i) => (
-          <div key={i.name} data-reveal className="border-t border-paper-2 pt-5">
+        {INDUSTRIES.map((i, idx) => (
+          <div
+            key={i.name}
+            data-reveal
+            className="border-t-2 pt-5"
+            style={{ borderColor: `var(--color-${TINTS[idx]})` }}
+          >
             <h3 className="u-display text-lg">{i.name}</h3>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-ink/65">{i.note}</p>
           </div>

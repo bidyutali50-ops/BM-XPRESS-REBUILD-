@@ -72,13 +72,17 @@ export default function Lifecycle() {
       </h2>
 
       <div className="relative mt-16">
-        <div className="stage-line absolute left-0 right-0 top-[5px] hidden h-px bg-paper-2 md:block" />
+        <div className="stage-line absolute left-0 right-0 -top-6 hidden h-px bg-paper-2 md:block" />
 
         <ol className="grid gap-12 md:grid-cols-4 md:gap-6">
           {STAGES.map((s) => (
-            <li key={s.state} className="stage-col relative">
+            <li
+              key={s.state}
+              className="stage-col u-tint relative rounded-card border p-5"
+              style={{ ["--tint" as string]: `var(--color-${s.state})` }}
+            >
               <span
-                className="stage-dot mb-6 hidden size-3 rounded-full md:block"
+                className="stage-dot mb-5 hidden size-3 rounded-full md:block"
                 style={{ background: `var(--color-${s.state})` }}
                 aria-hidden="true"
               />

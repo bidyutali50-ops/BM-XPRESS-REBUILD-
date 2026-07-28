@@ -27,7 +27,7 @@ export default function Nav() {
   return (
     <header
       ref={root}
-      className="sticky top-0 z-50 border-b border-paper-2/80 bg-paper/85 backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-paper-2/80 bg-paper/92 backdrop-blur-[6px]"
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
         <a href="#top" className="flex shrink-0 items-baseline gap-2">

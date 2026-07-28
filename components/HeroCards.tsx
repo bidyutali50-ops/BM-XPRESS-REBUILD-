@@ -97,7 +97,7 @@ export default function HeroCards() {
 
   return (
     <div ref={root} className="u-scene relative grid gap-4 sm:grid-cols-2 lg:block lg:h-[430px]">
-      <article className="hcard u-card3d rounded-card border border-paper-2 bg-white/85 p-5 backdrop-blur-sm lg:absolute lg:left-0 lg:top-0 lg:w-[270px]">
+      <article className="hcard u-card3d u-glass rounded-card p-5 lg:absolute lg:left-0 lg:top-0 lg:w-[270px]">
         <p className="u-eyebrow">Coverage</p>
         <p className="u-display mt-2 text-3xl">5 hubs</p>
         <div className="mt-4 flex flex-wrap gap-1.5">
@@ -109,7 +109,7 @@ export default function HeroCards() {
         </div>
       </article>
 
-      <article className="hcard u-card3d rounded-card border border-paper-2 bg-white/85 p-5 backdrop-blur-sm lg:absolute lg:right-0 lg:top-[118px] lg:w-[250px]">
+      <article className="hcard u-card3d u-glass rounded-card p-5 lg:absolute lg:right-0 lg:top-[118px] lg:w-[250px]">
         <p className="u-eyebrow">Every day</p>
         <p className="u-display mt-2 text-[2.1rem] leading-none">3,000+</p>
         <p className="u-data mt-2.5 text-ink/70">Deliveries processed</p>
@@ -118,7 +118,7 @@ export default function HeroCards() {
         </p>
       </article>
 
-      <article className="hcard u-card3d rounded-card border border-paper-2 bg-white/85 p-5 backdrop-blur-sm sm:col-span-2 lg:absolute lg:left-[26px] lg:top-[258px] lg:w-[290px]">
+      <article className="hcard u-card3d u-glass rounded-card p-5 sm:col-span-2 lg:absolute lg:left-[26px] lg:top-[258px] lg:w-[290px]">
         <p className="u-eyebrow">Every order, tracked</p>
         <ul className="mt-3.5 space-y-2">
           {STATES.map((s) => (

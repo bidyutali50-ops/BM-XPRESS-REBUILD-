@@ -57,7 +57,8 @@ export default function Services() {
             <article
               key={s.name}
               data-tilt
-              className="u-card3d group relative flex flex-col rounded-card border border-paper-2 bg-paper p-6 transition-colors duration-300 hover:border-ink/25"
+              className="u-card3d u-tint group relative flex flex-col rounded-card border p-6 transition-shadow duration-300 hover:shadow-[0_14px_40px_-18px_rgb(14_19_25/0.25)]"
+              style={{ ["--tint" as string]: `var(--color-${s.state})` }}
             >
               <span
                 className="absolute left-6 right-6 top-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"

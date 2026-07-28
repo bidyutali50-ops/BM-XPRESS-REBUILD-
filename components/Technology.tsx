@@ -35,9 +35,9 @@ export default function Technology() {
           decision before it is a technical one.
         </p>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-card bg-ink-3 md:grid-cols-3">
+        <div className="mt-16 grid gap-4 md:grid-cols-3">
           {POINTS.map((p) => (
-            <article key={p.head} data-reveal className="bg-ink-2 p-7">
+            <article key={p.head} data-reveal className="u-glass-dark rounded-card p-7">
               <h3 className="u-display text-xl">{p.head}</h3>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-paper/60">{p.body}</p>
             </article>

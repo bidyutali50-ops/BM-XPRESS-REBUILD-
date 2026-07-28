@@ -25,7 +25,7 @@ export default function Fulfilment() {
   const scope = useReveal<HTMLElement>(0.09);
 
   return (
-    <section id="fulfilment" ref={scope} className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section id="fulfilment" ref={scope} className="u-defer mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
       <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div>
           <p data-reveal className="u-eyebrow">

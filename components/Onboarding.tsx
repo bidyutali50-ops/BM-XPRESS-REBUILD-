@@ -30,7 +30,7 @@ export default function Onboarding() {
   const scope = useReveal<HTMLElement>(0.1);
 
   return (
-    <section id="onboarding" ref={scope} className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section id="onboarding" ref={scope} className="u-defer mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
       <p data-reveal className="u-eyebrow">
         Getting started
       </p>
