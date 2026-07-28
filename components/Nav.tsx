@@ -4,13 +4,12 @@ import { useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#industries", label: "Industries" },
-  { href: "#lifecycle", label: "How it runs" },
-  { href: "#network", label: "Network" },
-  { href: "#integrations", label: "Integrations" },
-  { href: "#faq", label: "FAQ" },
-  { href: "/track", label: "Track order" },
+  { href: "/#services", label: "Services" },
+  { href: "/#platform", label: "Platform" },
+  { href: "/#fulfilment", label: "Fulfilment" },
+  { href: "/#network", label: "Network" },
+  { href: "/#integrations", label: "Integrations" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Nav() {
