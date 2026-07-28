@@ -127,3 +127,19 @@ body {
 .u-faq summary::-webkit-details-marker {
   display: none;
 }
+
+/* Hero panel --------------------------------------------------- */
+.u-hero-panel {
+  background:
+    radial-gradient(
+      110% 85% at 8% 6%,
+      color-mix(in oklab, var(--color-transit) 9%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      95% 75% at 92% 18%,
+      color-mix(in oklab, var(--color-delivered) 10%, transparent) 0%,
+      transparent 62%
+    ),
+    linear-gradient(175deg, #ffffff 0%, var(--color-paper) 72%);
+}

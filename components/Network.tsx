@@ -1,5 +1,6 @@
 "use client";
 
+import HubLine from "./HubLine";
 import { useReveal } from "@/lib/useReveal";
 
 const HUBS = [
@@ -38,25 +39,9 @@ export default function Network() {
             </a>
           </div>
 
-          <ul className="divide-y divide-paper-2 border-y border-paper-2">
-            {HUBS.map((h) => (
-              <li
-                key={h.code}
-                data-reveal
-                className="group flex items-center gap-5 py-5 transition-colors duration-300 hover:bg-white/50"
-              >
-                <span className="u-data w-12 shrink-0 text-transit">{h.code}</span>
-                <div className="min-w-0">
-                  <p className="u-display text-lg">{h.name}</p>
-                  <p className="u-data mt-0.5 text-muted">{h.note}</p>
-                </div>
-                <span
-                  className="ml-auto size-1.5 shrink-0 rounded-full bg-delivered"
-                  aria-hidden="true"
-                />
-              </li>
-            ))}
-          </ul>
+          <div data-reveal>
+            <HubLine />
+          </div>
         </div>
       </div>
     </section>
