@@ -1,20 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState, type ComponentType } from "react";
+import type { LottieComponentProps } from "lottie-react";
 
 type Props = {
-  /** Public path to the Lottie JSON, e.g. "/lottie/onboarding.json" */
   src: string;
-  /** Descriptive label for screen readers. */
   ariaLabel?: string;
   className?: string;
-  /** Whether the animation loops. Defaults to true. */
   loop?: boolean;
-  /** Root margin for the intersection observer that triggers load. */
   rootMargin?: string;
 };
-
-type LottieModule = { default: ComponentType<Record<string, unknown>> };
 
 /**
  * Lazy Lottie player. Neither the JSON nor the lottie-react runtime is
@@ -30,7 +25,7 @@ export default function LottiePlayer({
   rootMargin = "200px",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [Lottie, setLottie] = useState<LottieModule["default"] | null>(null);
+  const [Lottie, setLottie] = useState<ComponentType<LottieComponentProps> | null>(null);
   const [data, setData] = useState<unknown>(null);
   const [reduced, setReduced] = useState(false);
 
@@ -40,8 +35,24 @@ export default function LottiePlayer({
 
   useEffect(() => {
     const el = ref.current;
+
+    async function load() {
+      try {
+        const [mod, res] = await Promise.all([
+          import("lottie-react"),
+          fetch(src, { cache: "force-cache" }),
+        ]);
+        const json = await res.json();
+        setLottie(() => mod.default);
+        setData(json);
+      } catch (err) {
+        // Silent fail — placeholder stays, layout doesn't shift
+        // eslint-disable-next-line no-console
+        console.warn("Lottie load failed:", err);
+      }
+    }
+
     if (!el || typeof IntersectionObserver === "undefined") {
-      // No IO available — load immediately as a safe fallback
       load();
       return;
     }
@@ -60,23 +71,6 @@ export default function LottiePlayer({
     );
 
     io.observe(el);
-
-    async function load() {
-      try {
-        const [mod, res] = await Promise.all([
-          import("lottie-react") as Promise<LottieModule>,
-          fetch(src, { cache: "force-cache" }),
-        ]);
-        const json = await res.json();
-        setLottie(() => mod.default);
-        setData(json);
-      } catch (err) {
-        // Silent fail — the placeholder stays and we don't break layout
-        // eslint-disable-next-line no-console
-        console.warn("Lottie load failed:", err);
-      }
-    }
-
     return () => io.disconnect();
   }, [src, rootMargin]);
 
