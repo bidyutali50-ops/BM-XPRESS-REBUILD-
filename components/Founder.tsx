@@ -3,9 +3,9 @@
 import { useReveal } from "@/lib/useReveal";
 
 /**
- * Swap PHOTO to a headshot path in /public to replace the initials mark,
- * e.g. "/founder.jpg". Left null it falls back to initials, which reads as
- * a deliberate choice rather than a missing image.
+ * Set PHOTO to a headshot path in /public (e.g. "/founder.jpg") to replace
+ * the initials mark. Nothing here is attributed speech — if you want a
+ * founder's note, write it yourself and it goes in below the title.
  */
 const PHOTO: string | null = null;
 
@@ -16,55 +16,33 @@ export default function Founder() {
 
   return (
     <section id="founder" ref={scope} className="border-y border-paper-2 bg-white/45">
-      <div className="mx-auto max-w-5xl px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-24">
         <p data-reveal className="u-eyebrow">
           Meet our founder
         </p>
 
-        <blockquote data-reveal className="mt-10">
-          <p className="u-display text-[clamp(1.5rem,3.4vw,2.35rem)] leading-[1.18]">
-            &ldquo;We started in Murshidabad, not Bengaluru. Every company that wants to
-            serve Bengal runs it from somewhere else, and the gap always shows up in the
-            last mile.&rdquo;
-          </p>
-        </blockquote>
-
-        <div data-reveal className="mt-9 max-w-2xl space-y-4 text-[0.98rem] leading-relaxed text-ink/70">
-          <p>
-            The pincodes nobody has walked. The addresses that do not resolve. The riders
-            who leave after a month because nobody paid them properly. Those are not
-            software problems, and you cannot fix them from a dashboard in another state.
-          </p>
-          <p>
-            So we did it the slow way. We wrote our own dispatch platform, put every rider
-            on our payroll, and opened hubs in the places our clients actually ship to.
-            Growing this way takes longer. It is also the only way the service holds when
-            volume arrives.
-          </p>
-        </div>
-
-        <div data-reveal className="mt-10 flex flex-wrap items-center gap-5 border-t border-paper-2 pt-8">
+        <div data-reveal className="mt-10 flex flex-wrap items-center gap-6">
           {PHOTO ? (
             <img
               src={PHOTO}
               alt="Bidyut Ali"
-              width={112}
-              height={112}
+              width={144}
+              height={144}
               loading="lazy"
-              className="size-14 rounded-full object-cover"
+              className="size-18 rounded-full object-cover"
             />
           ) : (
             <span
               aria-hidden="true"
-              className="u-display flex size-14 shrink-0 items-center justify-center rounded-full bg-ink text-lg text-paper"
+              className="u-display flex size-16 shrink-0 items-center justify-center rounded-full bg-ink text-xl text-paper"
             >
               BA
             </span>
           )}
 
           <div>
-            <p className="u-display text-lg">Bidyut Ali</p>
-            <p className="u-data mt-1 text-muted">
+            <p className="u-display text-2xl">Bidyut Ali</p>
+            <p className="u-data mt-1.5 text-muted">
               Founder and Managing Director, BM Xpress Logistics
             </p>
           </div>
@@ -78,6 +56,11 @@ export default function Founder() {
             Connect on LinkedIn
           </a>
         </div>
+
+        <p data-reveal className="mt-10 max-w-xl border-t border-paper-2 pt-8 leading-relaxed text-ink/70">
+          BM Xpress is built and run from Murshidabad, West Bengal, with hubs across the
+          state and a rider network on our own payroll.
+        </p>
       </div>
     </section>
   );
