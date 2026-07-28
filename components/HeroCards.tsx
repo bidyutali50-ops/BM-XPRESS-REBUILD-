@@ -110,10 +110,11 @@ export default function HeroCards() {
       </article>
 
       <article className="hcard u-card3d rounded-card border border-paper-2 bg-white/85 p-5 backdrop-blur-sm lg:absolute lg:right-0 lg:top-[118px] lg:w-[250px]">
-        <p className="u-eyebrow">Fleet</p>
-        <p className="u-display mt-2 text-3xl">143 riders</p>
+        <p className="u-eyebrow">Every day</p>
+        <p className="u-display mt-2 text-[2.1rem] leading-none">3,000+</p>
+        <p className="u-data mt-2.5 text-ink/70">Deliveries processed</p>
         <p className="u-data mt-3 leading-relaxed text-muted">
-          On our payroll, punched in, paid same day
+          On 143 riders we employ, punched in and paid same day
         </p>
       </article>
 

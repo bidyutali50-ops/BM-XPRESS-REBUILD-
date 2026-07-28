@@ -66,8 +66,9 @@ export default function Hero() {
               </h1>
 
               <p className="hero-fade mt-7 max-w-lg text-lg leading-relaxed text-ink/75">
-                Hyperlocal and last-mile delivery on 143 riders we employ and dispatch
-                software we wrote ourselves. Nothing is subcontracted into a black box.
+                Around 3,000 deliveries a day across five hubs, on 143 riders we employ and
+                dispatch software we wrote ourselves. Nothing is subcontracted into a
+                black box.
               </p>
 
               <div className="hero-fade mt-9 flex flex-wrap items-center gap-3">

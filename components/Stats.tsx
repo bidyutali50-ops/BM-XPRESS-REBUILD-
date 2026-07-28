@@ -5,6 +5,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
 
 /** Real figures. Add a fourth only when you have one you can evidence. */
 const STATS = [
+  { value: 3000, suffix: "+", label: "Deliveries processed daily" },
   { value: 143, suffix: "", label: "Riders on our payroll" },
   { value: 5, suffix: "", label: "Hubs live across West Bengal" },
   { value: 8, suffix: "", label: "Brands shipping with us" },
@@ -27,7 +28,7 @@ export default function Stats() {
 
           if (ctx.conditions?.reduced) {
             nums.forEach((n) => {
-              n.textContent = String(n.dataset.count);
+              n.textContent = Number(n.dataset.count).toLocaleString("en-IN");
             });
             return;
           }
@@ -41,7 +42,7 @@ export default function Stats() {
               ease: "power2.out",
               scrollTrigger: { trigger: n, start: "top 88%", once: true },
               onUpdate: () => {
-                n.textContent = String(Math.round(obj.v));
+                n.textContent = Math.round(obj.v).toLocaleString("en-IN");
               },
             });
           });
@@ -55,7 +56,7 @@ export default function Stats() {
 
   return (
     <section ref={root} className="border-b border-paper-2 bg-white/40">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 py-14 sm:px-8 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 py-14 sm:px-8 md:grid-cols-4">
         {STATS.map((s) => (
           <div key={s.label} className="border-l border-paper-2 pl-5 first:border-l-0 first:pl-0 md:border-l md:pl-6 md:first:border-l-0 md:first:pl-0">
             <p className="u-display text-[clamp(2rem,4.5vw,2.9rem)]">
