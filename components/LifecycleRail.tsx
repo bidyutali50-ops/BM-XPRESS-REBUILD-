@@ -23,6 +23,12 @@ export default function LifecycleRail() {
 
   useGSAP(
     () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(fill.current, { scaleY: 1 });
+        setStage(STAGES.length - 1);
+        return;
+      }
+
       const tween = gsap.to(fill.current, {
         scaleY: 1,
         ease: "none",

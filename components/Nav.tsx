@@ -18,7 +18,11 @@ export default function Nav() {
 
   useGSAP(
     () => {
-      gsap.from(root.current, { y: -24, opacity: 0, duration: 0.7, delay: 0.1 });
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(root.current, { y: -24, opacity: 0, duration: 0.7, delay: 0.1 });
+      });
+      return () => mm.revert();
     },
     { scope: root }
   );

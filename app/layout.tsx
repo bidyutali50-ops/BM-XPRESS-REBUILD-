@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Public_Sans, JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
+import Preloader from "@/components/Preloader";
+import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -31,6 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${bricolage.variable} ${publicSans.variable} ${jetbrains.variable}`}>
       <body>
+        <Preloader />
+        <ScrollProgress />
         <SmoothScroll />
         {children}
       </body>

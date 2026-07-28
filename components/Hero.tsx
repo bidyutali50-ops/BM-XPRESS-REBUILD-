@@ -34,6 +34,18 @@ export default function Hero() {
             .from(".hero-line", { yPercent: 106, duration: 1, stagger: 0.09 }, "-=0.3")
             .from(".hero-fade", { y: 16, opacity: 0, duration: 0.7, stagger: 0.09 }, "-=0.5")
             .from(".hero-proof", { y: 14, opacity: 0, duration: 0.6, stagger: 0.08 }, "-=0.35");
+
+          gsap.to(".hero-parallax", {
+            y: -70,
+            opacity: 0.35,
+            ease: "none",
+            scrollTrigger: {
+              trigger: root.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.5,
+            },
+          });
         }
       );
 
@@ -46,7 +58,7 @@ export default function Hero() {
     <section id="top" ref={root} className="px-3 pt-3 sm:px-4">
       <div className="u-hero-panel overflow-hidden rounded-[24px] border border-ink/8">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:px-10 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          <div className="hero-parallax grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
             <div>
               <span className="hero-pill inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/60 py-1.5 pl-3 pr-4">
                 <span className="size-1.5 rounded-full bg-delivered" aria-hidden="true" />
