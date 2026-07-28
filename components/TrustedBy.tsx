@@ -62,9 +62,12 @@ export default function TrustedBy() {
             "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
         }}
       >
-        <ul className="tb-track flex w-max items-center gap-14 pr-14 sm:gap-20 sm:pr-20">
+        <ul className="tb-track flex w-max items-center gap-12 pr-12 sm:gap-16 sm:pr-16">
           {TRACK.map((c, i) => (
-            <li key={`${c.name}-${i}`} className="shrink-0">
+            <li
+              key={`${c.name}-${i}`}
+              className="flex h-7 w-[92px] shrink-0 items-center justify-center sm:h-[34px] sm:w-[110px]"
+            >
               <img
                 src={c.src}
                 alt={i < CLIENTS.length ? c.name : ""}
@@ -73,7 +76,7 @@ export default function TrustedBy() {
                 height={c.h}
                 loading={i < CLIENTS.length ? "eager" : "lazy"}
                 decoding="async"
-                className="h-9 w-auto max-w-[170px] object-contain sm:h-11"
+                className="max-h-full max-w-full object-contain"
               />
             </li>
           ))}
