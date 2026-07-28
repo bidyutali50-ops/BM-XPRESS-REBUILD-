@@ -1,17 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 const LINKS = [
-  { href: "#lifecycle", label: "How it runs" },
   { href: "#services", label: "Services" },
+  { href: "#industries", label: "Industries" },
+  { href: "#lifecycle", label: "How it runs" },
   { href: "#network", label: "Network" },
-  { href: "#technology", label: "Technology" },
+  { href: "#integrations", label: "Integrations" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export default function Nav() {
   const root = useRef<HTMLElement>(null);
+  const [open, setOpen] = useState(false);
 
   useGSAP(
     () => {
@@ -23,34 +26,58 @@ export default function Nav() {
   return (
     <header
       ref={root}
-      className="sticky top-0 z-50 border-b border-paper-2/80 bg-paper/80 backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-paper-2/80 bg-paper/85 backdrop-blur-md"
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a href="#top" className="flex items-baseline gap-2">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
+        <a href="#top" className="flex shrink-0 items-baseline gap-2">
           <span className="u-display text-xl">BM Xpress</span>
           <span className="u-data hidden text-muted sm:inline">BMX</span>
         </a>
 
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {LINKS.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className="u-data text-ink/70 transition-colors hover:text-ink"
-              >
+              <a href={l.href} className="u-data text-ink/70 transition-colors hover:text-ink">
                 {l.label}
               </a>
             </li>
           ))}
         </ul>
 
-        <a
-          href="#contact"
-          className="u-data rounded-full bg-ink px-4 py-2 text-paper transition-transform duration-200 hover:-translate-y-0.5"
-        >
-          Book a pilot
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="u-data shrink-0 rounded-full bg-ink px-4 py-2 text-paper transition-transform duration-200 hover:-translate-y-0.5"
+          >
+            Book a pilot
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label="Toggle navigation"
+            className="u-data rounded-full border border-ink/20 px-3 py-2 lg:hidden"
+          >
+            {open ? "Close" : "Menu"}
+          </button>
+        </div>
       </nav>
+
+      {open && (
+        <ul className="border-t border-paper-2 bg-paper px-5 pb-4 pt-2 sm:px-8 lg:hidden">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="u-data block py-2.5 text-ink/70"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </header>
   );
 }

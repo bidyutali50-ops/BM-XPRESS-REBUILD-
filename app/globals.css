@@ -97,3 +97,33 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* 3D depth ----------------------------------------------------- */
+.u-scene {
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+}
+
+.u-card3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.u-card3d > * {
+  transform-style: preserve-3d;
+}
+
+/* Accordion ---------------------------------------------------- */
+.u-faq[open] .u-faq-icon {
+  transform: rotate(45deg);
+}
+
+.u-faq summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.u-faq summary::-webkit-details-marker {
+  display: none;
+}

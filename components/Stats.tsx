@@ -1,0 +1,76 @@
+"use client";
+
+import { useRef } from "react";
+import { gsap, useGSAP } from "@/lib/gsap";
+
+/**
+ * PLACEHOLDER FIGURES.
+ * Replace every value with a number you can evidence, or delete this
+ * section. Inflated stats are the fastest way to lose a first sales call.
+ */
+const STATS = [
+  { value: 5, suffix: "", label: "Hubs live across West Bengal" },
+  { value: 8, suffix: "", label: "Brands shipping with us" },
+  { value: 0, suffix: "", label: "Riders on payroll — set this" },
+  { value: 0, suffix: "%", label: "On-time rate — set this" },
+];
+
+export default function Stats() {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          motion: "(prefers-reduced-motion: no-preference)",
+          reduced: "(prefers-reduced-motion: reduce)",
+        },
+        (ctx) => {
+          const nums = gsap.utils.toArray<HTMLElement>("[data-count]", root.current);
+
+          if (ctx.conditions?.reduced) {
+            nums.forEach((n) => {
+              n.textContent = String(n.dataset.count);
+            });
+            return;
+          }
+
+          nums.forEach((n) => {
+            const end = Number(n.dataset.count);
+            const obj = { v: 0 };
+            gsap.to(obj, {
+              v: end,
+              duration: 1.4,
+              ease: "power2.out",
+              scrollTrigger: { trigger: n, start: "top 88%", once: true },
+              onUpdate: () => {
+                n.textContent = String(Math.round(obj.v));
+              },
+            });
+          });
+        }
+      );
+
+      return () => mm.revert();
+    },
+    { scope: root }
+  );
+
+  return (
+    <section ref={root} className="border-b border-paper-2 bg-white/40">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 py-14 sm:px-8 md:grid-cols-4">
+        {STATS.map((s) => (
+          <div key={s.label} className="border-l border-paper-2 pl-5 first:border-l-0 first:pl-0 md:border-l md:pl-6 md:first:border-l-0 md:first:pl-0">
+            <p className="u-display text-[clamp(2rem,4.5vw,2.9rem)]">
+              <span data-count={s.value}>0</span>
+              {s.suffix}
+            </p>
+            <p className="u-data mt-2 max-w-[15ch] leading-relaxed text-muted">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

@@ -66,3 +66,30 @@ duplicate tweens.
 - [ ] No sample or placeholder data remains on the page
 - [ ] Add the eight confirmed clients as a logo row if you want one back
 - [ ] No metrics are claimed anywhere on this page. If you add any, source them.
+
+## Placeholders you must fill or delete
+
+Two sections ship with fake content on purpose, clearly marked in the source:
+
+- `components/Stats.tsx` — four figures. Two are real (5 hubs, 8 brands), two
+  are set to `0` and labelled "set this". Put in numbers you can evidence, or
+  delete the whole section. A stat you cannot defend in a sales call is worse
+  than no stat.
+- `components/TrustedBy.tsx` — "Client one" through "Client eight". Swap in the
+  eight confirmed names, or delete.
+
+## Page order
+
+Hero · Hub strip · Stats · Services · Industries · Lifecycle · Network ·
+Integrations · Technology · Onboarding · Trusted by · FAQ · Contact
+
+## The 3D
+
+CSS 3D, not WebGL. `lib/useTilt.ts` tracks the pointer and drives `rotationX`
+and `rotationY` on service cards via `gsap.quickTo`, with the inner content
+lifted on `translateZ` for parallax between the card face and its text.
+
+It costs nothing in bundle size, composites on the GPU, and is skipped
+entirely on coarse pointers and under `prefers-reduced-motion`. Three.js would
+have added roughly 150 kB and a real paint cost for the same impression of
+depth.
