@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import Fulfilment from "@/components/Fulfilment";
+import Industries from "@/components/Industries";
 import Testimonials from "@/components/Testimonials";
 import Lifecycle from "@/components/Lifecycle";
 import Network from "@/components/Network";
@@ -26,6 +27,7 @@ export default function Page() {
         <Stats />
         <Services />
         <Fulfilment />
+        <Industries />
         <Lifecycle />
         <Network />
         <Integrations />
