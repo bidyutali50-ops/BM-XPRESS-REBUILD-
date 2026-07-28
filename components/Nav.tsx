@@ -5,14 +5,12 @@ import GooeyNav from "./GooeyNav";
 
 const PILLS = [
   { label: "Services", href: "/#services" },
-  { label: "Industries", href: "/#industries" },
   { label: "Network", href: "/#network" },
   { label: "FAQ", href: "/#faq" },
 ];
 
 const MOBILE_LINKS = [
   { label: "Services", href: "/#services" },
-  { label: "Industries", href: "/#industries" },
   { label: "How it runs", href: "/#lifecycle" },
   { label: "Network", href: "/#network" },
   { label: "Integrations", href: "/#integrations" },

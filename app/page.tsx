@@ -5,7 +5,6 @@ import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import Fulfilment from "@/components/Fulfilment";
 import Testimonials from "@/components/Testimonials";
-import Industries from "@/components/Industries";
 import Lifecycle from "@/components/Lifecycle";
 import Network from "@/components/Network";
 import Integrations from "@/components/Integrations";
@@ -27,7 +26,6 @@ export default function Page() {
         <Stats />
         <Services />
         <Fulfilment />
-        <Industries />
         <Lifecycle />
         <Network />
         <Integrations />
