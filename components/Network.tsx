@@ -3,13 +3,6 @@
 import HubLine from "./HubLine";
 import { useReveal } from "@/lib/useReveal";
 
-const HUBS = [
-  { code: "MSD", name: "Murshidabad", note: "Head office and control room" },
-  { code: "RJH", name: "Rajarhat", note: "New Town and Salt Lake coverage" },
-  { code: "KOL", name: "Kolkata", note: "Central and south city" },
-  { code: "DKN", name: "Dankuni", note: "Howrah and Hooghly corridor" },
-  { code: "CDN", name: "Chandannagar", note: "Upper Hooghly belt" },
-];
 
 export default function Network() {
   const scope = useReveal<HTMLElement>(0.07);
