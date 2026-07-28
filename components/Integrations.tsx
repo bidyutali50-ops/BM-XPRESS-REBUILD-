@@ -2,13 +2,18 @@
 
 import { useReveal } from "@/lib/useReveal";
 
+/**
+ * Drop SVGs into /public/integrations named to match `slug` and they render
+ * automatically. Until a file exists the wordmark shows instead, which is
+ * honest and still legible.
+ */
 const WAYS = [
-  { name: "Shopify", note: "Orders sync from your store" },
-  { name: "WooCommerce", note: "Plugin or webhook" },
-  { name: "Unicommerce", note: "OMS handover" },
-  { name: "REST API", note: "Push orders, pull status" },
-  { name: "Excel or CSV", note: "Upload a file, no build" },
-  { name: "Client panel", note: "Book orders by hand" },
+  { name: "Shopify", slug: "shopify", note: "Orders sync from your store", logo: false },
+  { name: "WooCommerce", slug: "woocommerce", note: "Plugin or webhook", logo: false },
+  { name: "Unicommerce", slug: "unicommerce", note: "OMS handover", logo: false },
+  { name: "Shiprocket", slug: "shiprocket", note: "Aggregator handover", logo: false },
+  { name: "REST API", slug: "api", note: "Push orders, pull status", logo: false },
+  { name: "Excel or CSV", slug: "csv", note: "Upload a file, no build", logo: false },
 ];
 
 export default function Integrations() {
@@ -26,17 +31,28 @@ export default function Integrations() {
               Integrate, or don&rsquo;t.
             </h2>
             <p data-reveal className="mt-6 max-w-md leading-relaxed text-ink/70">
-              The API is there if your team wants it. Plenty of our clients never touch
-              it and upload a file instead. Neither route changes what happens once the
-              order reaches a rider.
+              The API is there if your team wants it. Plenty of our clients never touch it
+              and upload a file instead. Neither route changes what happens once the order
+              reaches a rider.
             </p>
           </div>
 
           <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-card bg-paper-2 sm:grid-cols-3">
             {WAYS.map((w) => (
-              <li key={w.name} data-reveal className="bg-paper p-5">
-                <p className="u-display text-base">{w.name}</p>
-                <p className="u-data mt-1.5 text-muted">{w.note}</p>
+              <li key={w.name} data-reveal className="flex flex-col bg-paper p-5">
+                <div className="flex h-7 items-center">
+                  {w.logo ? (
+                    <img
+                      src={`/integrations/${w.slug}.svg`}
+                      alt={w.name}
+                      className="max-h-full w-auto max-w-[112px] object-contain"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span className="u-display text-base">{w.name}</span>
+                  )}
+                </div>
+                <p className="u-data mt-2 text-muted">{w.note}</p>
               </li>
             ))}
           </ul>

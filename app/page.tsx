@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
+import Fulfilment from "@/components/Fulfilment";
 import Industries from "@/components/Industries";
 import Lifecycle from "@/components/Lifecycle";
 import Network from "@/components/Network";
@@ -24,6 +25,7 @@ export default function Page() {
         <TrustedBy />
         <Stats />
         <Services />
+        <Fulfilment />
         <Industries />
         <Lifecycle />
         <Network />

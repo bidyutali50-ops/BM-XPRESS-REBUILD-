@@ -21,10 +21,10 @@ export default function FinalCTA() {
 
       <div data-reveal className="mt-10 flex flex-wrap items-center gap-3">
         <a
-          href="mailto:hello@bmxpress.in"
+          href="/quote"
           className="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper transition-transform duration-200 hover:-translate-y-0.5"
         >
-          Email the team
+          Get a quote
         </a>
         <a
           href="tel:+910000000000"

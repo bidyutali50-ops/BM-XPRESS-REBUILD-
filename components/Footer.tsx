@@ -2,29 +2,36 @@ const COLUMNS = [
   {
     head: "Services",
     links: [
-      { label: "Hyperlocal same-day", href: "#services" },
-      { label: "Last-mile for 3PLs", href: "#services" },
-      { label: "Dedicated fleet", href: "#services" },
-      { label: "Reverse and RTO", href: "#services" },
+      { label: "Hyperlocal same-day", href: "/#services" },
+      { label: "Last-mile for 3PLs", href: "/#services" },
+      { label: "Dedicated fleet", href: "/#services" },
+      { label: "Storage and fulfilment", href: "/#fulfilment" },
     ],
   },
   {
     head: "Company",
     links: [
-      { label: "How it runs", href: "#lifecycle" },
-      { label: "Network", href: "#network" },
-      { label: "Technology", href: "#technology" },
-      { label: "Getting started", href: "#onboarding" },
+      { label: "How it runs", href: "/#lifecycle" },
+      { label: "Network", href: "/#network" },
+      { label: "Technology", href: "/#technology" },
+      { label: "Getting started", href: "/#onboarding" },
     ],
   },
   {
     head: "Get in touch",
     links: [
-      { label: "Book a pilot", href: "#contact" },
-      { label: "Integrations", href: "#integrations" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Get a quote", href: "/quote" },
+      { label: "Track an order", href: "/track" },
+      { label: "Integrations", href: "/#integrations" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
+];
+
+/** TODO: replace with the real company handles. */
+const SOCIALS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/bm-xpress" },
+  { label: "Instagram", href: "https://www.instagram.com/bmxpress" },
 ];
 
 export default function Footer() {
@@ -43,6 +50,21 @@ export default function Footer() {
               <br />
               Murshidabad, West Bengal, India
             </p>
+
+            <ul className="mt-5 flex gap-4">
+              {SOCIALS.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="u-data text-ink/65 underline-offset-4 transition-colors hover:text-ink hover:underline"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {COLUMNS.map((col) => (
@@ -68,7 +90,18 @@ export default function Footer() {
           <p className="u-data text-muted">
             &copy; {new Date().getFullYear()} BM Xpress Logistics Pvt Ltd
           </p>
-          <p className="u-data text-muted">Built and run in-house</p>
+          <ul className="flex gap-5">
+            <li>
+              <a href="/terms" className="u-data text-muted transition-colors hover:text-ink">
+                Terms
+              </a>
+            </li>
+            <li>
+              <a href="/privacy" className="u-data text-muted transition-colors hover:text-ink">
+                Privacy
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

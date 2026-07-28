@@ -10,6 +10,7 @@ const LINKS = [
   { href: "#network", label: "Network" },
   { href: "#integrations", label: "Integrations" },
   { href: "#faq", label: "FAQ" },
+  { href: "/track", label: "Track order" },
 ];
 
 export default function Nav() {
@@ -46,10 +47,16 @@ export default function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href="/track"
+            className="u-data hidden shrink-0 rounded-full border border-ink/20 px-4 py-2 transition-colors hover:border-ink/50 sm:inline-block lg:hidden xl:inline-block"
+          >
+            Track
+          </a>
+          <a
+            href="/quote"
             className="u-data shrink-0 rounded-full bg-ink px-4 py-2 text-paper transition-transform duration-200 hover:-translate-y-0.5"
           >
-            Book a pilot
+            Get a quote
           </a>
           <button
             type="button"
