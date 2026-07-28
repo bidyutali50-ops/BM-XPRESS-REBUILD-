@@ -1,62 +1,50 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { useState } from "react";
+import GooeyNav from "./GooeyNav";
 
-const LINKS = [
-  { href: "/#services", label: "Services" },
-  { href: "/#fulfilment", label: "Fulfilment" },
-  { href: "/#network", label: "Network" },
-  { href: "/#integrations", label: "Integrations" },
-  { href: "/#faq", label: "FAQ" },
+const PILLS = [
+  { label: "Services", href: "/#services" },
+  { label: "Industries", href: "/#industries" },
+  { label: "Network", href: "/#network" },
+  { label: "FAQ", href: "/#faq" },
+];
+
+const MOBILE_LINKS = [
+  { label: "Services", href: "/#services" },
+  { label: "Industries", href: "/#industries" },
+  { label: "How it runs", href: "/#lifecycle" },
+  { label: "Network", href: "/#network" },
+  { label: "Integrations", href: "/#integrations" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Track order", href: "/track" },
 ];
 
 export default function Nav() {
-  const root = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.from(root.current, { y: -24, opacity: 0, duration: 0.7, delay: 0.1 });
-      });
-      return () => mm.revert();
-    },
-    { scope: root }
-  );
-
   return (
-    <header
-      ref={root}
-      className="sticky top-0 z-50 border-b border-paper-2/80 bg-paper/92 backdrop-blur-[6px]"
-    >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
-        <a href="#top" className="flex shrink-0 items-baseline gap-2">
+    <header className="sticky top-0 z-50 border-b border-white/6 bg-ink text-paper">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+        <a href="/#top" className="flex shrink-0 items-baseline gap-2">
           <span className="u-display text-xl">BM Xpress</span>
-          <span className="u-data hidden text-muted sm:inline">BMX</span>
+          <span className="u-data hidden text-paper/45 sm:inline">BMX</span>
         </a>
 
-        <ul className="hidden items-center gap-6 lg:flex">
-          {LINKS.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} className="u-data text-ink/70 transition-colors hover:text-ink">
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden lg:block">
+          <GooeyNav items={PILLS} initialActiveIndex={0} />
+        </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <a
             href="/track"
-            className="u-data hidden shrink-0 rounded-full border border-ink/20 px-4 py-2 transition-colors hover:border-ink/50 sm:inline-block lg:hidden xl:inline-block"
+            className="u-data hidden shrink-0 rounded-full border border-paper/20 px-4 py-2 transition-colors hover:border-paper/50 sm:inline-block"
           >
             Track
           </a>
           <a
             href="/quote"
-            className="u-data shrink-0 rounded-full bg-ink px-4 py-2 text-paper transition-transform duration-200 hover:-translate-y-0.5"
+            className="u-data shrink-0 rounded-full bg-paper px-4 py-2 text-ink transition-transform duration-200 hover:-translate-y-0.5"
           >
             Get a quote
           </a>
@@ -65,21 +53,21 @@ export default function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Toggle navigation"
-            className="u-data rounded-full border border-ink/20 px-3 py-2 lg:hidden"
+            className="u-data rounded-full border border-paper/20 px-3 py-2 lg:hidden"
           >
             {open ? "Close" : "Menu"}
           </button>
         </div>
-      </nav>
+      </div>
 
       {open && (
-        <ul className="border-t border-paper-2 bg-paper px-5 pb-4 pt-2 sm:px-8 lg:hidden">
-          {LINKS.map((l) => (
+        <ul className="border-t border-paper/10 bg-ink px-5 pb-4 pt-2 sm:px-8 lg:hidden">
+          {MOBILE_LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="u-data block py-2.5 text-ink/70"
+                className="u-data block py-2.5 text-paper/70 hover:text-paper"
               >
                 {l.label}
               </a>
