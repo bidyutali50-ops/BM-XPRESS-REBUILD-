@@ -3,6 +3,7 @@ import { Archivo, Public_Sans, JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
+import ClickSpark from "@/components/ClickSpark";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Preloader />
         <ScrollProgress />
         <SmoothScroll />
+        <ClickSpark />
         {children}
       </body>
     </html>
