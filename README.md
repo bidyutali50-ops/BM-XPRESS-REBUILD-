@@ -24,7 +24,6 @@ components/
   LifecycleRail.tsx     signature: page-long delivery-state rail
   Nav.tsx
   Hero.tsx
-  DispatchTicker.tsx    ambient looping dispatch feed
   HubStrip.tsx          hub marquee
   Lifecycle.tsx         four delivery states
   Services.tsx
@@ -64,7 +63,6 @@ duplicate tweens.
 ## Before deploy
 
 - [ ] Real contact email and phone in `FinalCTA.tsx` (placeholder note is on the page)
-- [ ] Point `DispatchTicker` at a live BMX Dispatch feed, or keep the
-      "Illustrative view" label — do not remove the label while the rows are sample data
+- [ ] No sample or placeholder data remains on the page
 - [ ] Add the eight confirmed clients as a logo row if you want one back
 - [ ] No metrics are claimed anywhere on this page. If you add any, source them.

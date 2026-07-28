@@ -68,5 +68,3 @@ Keep the `@/*` import alias — every component imports `@/lib/gsap`.
 
 - [ ] Real contact email and phone in `components/FinalCTA.tsx`
 - [ ] Tailwind v4 assumed (`@theme` lives in `app/globals.css`)
-- [ ] The dispatch ticker says "Illustrative view" — leave that label until
-      it reads from a real feed
