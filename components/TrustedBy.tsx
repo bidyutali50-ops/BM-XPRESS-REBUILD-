@@ -11,81 +11,128 @@ const CLIENTS = [
   { name: "Grab", src: "/logos/grab.png", w: 133, h: 53 },
 ];
 
-/** Tripled so the track is wide enough to loop seamlessly on any screen. */
-const TRACK = [...CLIENTS, ...CLIENTS, ...CLIENTS];
+const INTEGRATIONS = [
+  { name: "Shiprocket", src: "/logos/shiprocket.svg", w: 854, h: 190 },
+  { name: "ClickPost", src: "/logos/clickpost.webp", w: 660, h: 202 },
+  { name: "Fynd", src: "/logos/fynd.svg", w: 148, h: 50 },
+  { name: "ElasticRun", src: "/logos/elasticrun.svg", w: 200, h: 60 },
+];
 
-export default function TrustedBy() {
-  const root = useRef<HTMLElement>(null);
+type Row = { name: string; src: string; w: number; h: number };
+
+function Marquee({
+  items,
+  duration,
+  reverse = false,
+  className = "",
+}: {
+  items: Row[];
+  duration: number;
+  reverse?: boolean;
+  className?: string;
+}) {
+  const root = useRef<HTMLDivElement>(null);
+  const track = [...items, ...items, ...items];
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
-
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const track = root.current!.querySelector<HTMLElement>(".tb-track")!;
+        const el = root.current!.querySelector<HTMLElement>(".tb-track")!;
 
-        const loop = gsap.to(track, {
-          xPercent: -33.3333,
-          duration: 26,
+        const loop = gsap.to(el, {
+          xPercent: reverse ? 33.3333 : -33.3333,
+          duration,
           ease: "none",
           repeat: -1,
         });
 
+        if (reverse) gsap.set(el, { xPercent: -33.3333 });
+
         const slow = () => gsap.to(loop, { timeScale: 0, duration: 0.4 });
         const resume = () => gsap.to(loop, { timeScale: 1, duration: 0.4 });
 
-        root.current!.addEventListener("pointerenter", slow);
-        root.current!.addEventListener("pointerleave", resume);
+        const host = root.current!;
+        host.addEventListener("pointerenter", slow);
+        host.addEventListener("pointerleave", resume);
 
         return () => {
-          root.current?.removeEventListener("pointerenter", slow);
-          root.current?.removeEventListener("pointerleave", resume);
+          host.removeEventListener("pointerenter", slow);
+          host.removeEventListener("pointerleave", resume);
           loop.kill();
         };
       });
-
       return () => mm.revert();
     },
     { scope: root }
   );
 
   return (
-    <section ref={root} className="border-b border-paper-2 bg-white/45 py-12 sm:py-14">
-      <p className="u-eyebrow mx-auto max-w-6xl px-5 sm:px-8">Trusted by</p>
+    <div
+      ref={root}
+      className={`overflow-hidden ${className}`}
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+      }}
+    >
+      <ul className="tb-track flex w-max items-center gap-10 pr-10 sm:gap-14 sm:pr-14">
+        {track.map((c, i) => (
+          <li
+            key={`${c.name}-${i}`}
+            className="flex h-8 w-[104px] shrink-0 items-center justify-center sm:h-10 sm:w-[128px]"
+          >
+            <img
+              src={c.src}
+              alt={i < items.length ? c.name : ""}
+              aria-hidden={i >= items.length}
+              width={c.w}
+              height={c.h}
+              loading={i < items.length ? "eager" : "lazy"}
+              decoding="async"
+              className="max-h-full max-w-full object-contain"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-      <div
-        className="mt-8 overflow-hidden"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
-        }}
-      >
-        <ul className="tb-track flex w-max items-center gap-12 pr-12 sm:gap-16 sm:pr-16">
-          {TRACK.map((c, i) => (
-            <li
-              key={`${c.name}-${i}`}
-              className="flex h-7 w-[92px] shrink-0 items-center justify-center sm:h-[34px] sm:w-[110px]"
-            >
-              <img
-                src={c.src}
-                alt={i < CLIENTS.length ? c.name : ""}
-                aria-hidden={i >= CLIENTS.length}
-                width={c.w}
-                height={c.h}
-                loading={i < CLIENTS.length ? "eager" : "lazy"}
-                decoding="async"
-                className="max-h-full max-w-full object-contain"
-              />
-            </li>
-          ))}
-        </ul>
+export default function TrustedBy() {
+  return (
+    <section
+      id="partners"
+      aria-labelledby="partners-heading"
+      className="border-b border-paper-2 bg-white/45 py-20 sm:py-24"
+    >
+      <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
+        <p className="u-eyebrow">The company we keep</p>
+        <h2
+          id="partners-heading"
+          className="u-display u-display-xl mx-auto mt-5 max-w-3xl text-[clamp(2rem,5.4vw,3.6rem)]"
+        >
+          Integrations and our partners.
+        </h2>
       </div>
 
-      <p className="u-data mx-auto mt-8 max-w-6xl px-5 text-muted sm:px-8">
-        Five of eight brands currently on the network.
-      </p>
+      <div className="mt-14 space-y-8">
+        <div>
+          <p className="u-eyebrow mx-auto mb-5 max-w-6xl px-5 text-muted sm:px-8">
+            Clients we deliver for
+          </p>
+          <Marquee items={CLIENTS} duration={28} />
+        </div>
+
+        <div>
+          <p className="u-eyebrow mx-auto mb-5 max-w-6xl px-5 text-muted sm:px-8">
+            Platforms we integrate with
+          </p>
+          <Marquee items={INTEGRATIONS} duration={32} reverse />
+        </div>
+      </div>
     </section>
   );
 }

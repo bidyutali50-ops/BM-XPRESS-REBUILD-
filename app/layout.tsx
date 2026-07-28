@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Public_Sans, JetBrains_Mono } from "next/font/google";
+import { Archivo, Public_Sans, JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-bricolage",
+  variable: "--font-archivo",
   display: "swap",
 });
 
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${publicSans.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${publicSans.variable} ${jetbrains.variable}`}>
       <body>
         <Preloader />
         <ScrollProgress />

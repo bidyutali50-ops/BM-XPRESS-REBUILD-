@@ -11,7 +11,7 @@ const WAYS = [
   { name: "Shopify", slug: "shopify", note: "Orders sync from your store", logo: false },
   { name: "WooCommerce", slug: "woocommerce", note: "Plugin or webhook", logo: false },
   { name: "Unicommerce", slug: "unicommerce", note: "OMS handover", logo: false },
-  { name: "Shiprocket", slug: "shiprocket", note: "Aggregator handover", logo: false },
+  { name: "Shiprocket", slug: "shiprocket", note: "Aggregator handover", logo: true },
   { name: "REST API", slug: "api", note: "Push orders, pull status", logo: false },
   { name: "Excel or CSV", slug: "csv", note: "Upload a file, no build", logo: false },
 ];

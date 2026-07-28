@@ -19,7 +19,7 @@
   --color-transit: #3b6fe0;
   --color-delivered: #2f9e6b;
 
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
@@ -42,10 +42,16 @@ body {
 /* Type scale ------------------------------------------------- */
 .u-display {
   font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 0.94;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 0.98;
   text-wrap: balance;
+}
+
+.u-display-xl {
+  font-weight: 800;
+  letter-spacing: -0.042em;
+  line-height: 0.9;
 }
 
 .u-eyebrow {
