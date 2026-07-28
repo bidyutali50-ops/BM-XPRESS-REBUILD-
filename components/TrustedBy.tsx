@@ -6,6 +6,8 @@ const CLIENTS = [
   { name: "Flipkart", src: "/logos/flipkart.webp", w: 92, h: 36 },
   { name: "Pidge", src: "/logos/pidge.svg", w: 92, h: 38 },
   { name: "Adloggs", src: "/logos/adloggs.svg", w: 233, h: 64 },
+  { name: "PrraniGanga", src: "/logos/prraniganga.png", w: 938, h: 243 },
+  { name: "Grab", src: "/logos/grab.png", w: 133, h: 53 },
 ];
 
 export default function TrustedBy() {
@@ -18,7 +20,7 @@ export default function TrustedBy() {
           Trusted by
         </p>
 
-        <ul className="mt-10 flex flex-wrap items-center gap-x-14 gap-y-10">
+        <ul className="mt-10 flex flex-wrap items-center gap-x-12 gap-y-9">
           {CLIENTS.map((c) => (
             <li key={c.name} data-reveal>
               <img
@@ -28,7 +30,7 @@ export default function TrustedBy() {
                 height={c.h}
                 loading="lazy"
                 decoding="async"
-                className="h-8 w-auto opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-9"
+                className="h-7 w-auto max-w-[150px] object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-8"
               />
             </li>
           ))}
