@@ -67,16 +67,15 @@ duplicate tweens.
 - [ ] Add the eight confirmed clients as a logo row if you want one back
 - [ ] No metrics are claimed anywhere on this page. If you add any, source them.
 
-## Placeholders you must fill or delete
+## Client logos
 
-Two sections ship with fake content on purpose, clearly marked in the source:
+`public/logos/` holds Flipkart, Pidge, and Adloggs, rendered at reduced
+opacity and grayscale, returning to full colour on hover. Note that using a
+client's trademark on your marketing site normally needs their sign-off —
+worth confirming with Flipkart in particular before this goes into paid ads.
 
-- `components/Stats.tsx` — four figures. Two are real (5 hubs, 8 brands), two
-  are set to `0` and labelled "set this". Put in numbers you can evidence, or
-  delete the whole section. A stat you cannot defend in a sales call is worse
-  than no stat.
-- `components/TrustedBy.tsx` — "Client one" through "Client eight". Swap in the
-  eight confirmed names, or delete.
+Stats are now three real figures: 143 riders, 5 hubs, 8 brands. Add a fourth
+only when you have one you can evidence.
 
 ## Page order
 

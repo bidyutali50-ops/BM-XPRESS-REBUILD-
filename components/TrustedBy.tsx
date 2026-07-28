@@ -2,37 +2,42 @@
 
 import { useReveal } from "@/lib/useReveal";
 
-/** Replace with your eight confirmed clients, or delete this section. */
 const CLIENTS = [
-  "Client one",
-  "Client two",
-  "Client three",
-  "Client four",
-  "Client five",
-  "Client six",
-  "Client seven",
-  "Client eight",
+  { name: "Flipkart", src: "/logos/flipkart.webp", w: 92, h: 36 },
+  { name: "Pidge", src: "/logos/pidge.svg", w: 92, h: 38 },
+  { name: "Adloggs", src: "/logos/adloggs.svg", w: 233, h: 64 },
 ];
 
 export default function TrustedBy() {
-  const scope = useReveal<HTMLElement>(0.05);
+  const scope = useReveal<HTMLElement>(0.08);
 
   return (
-    <section ref={scope} className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-      <p data-reveal className="u-eyebrow">
-        Shipping with us
-      </p>
-      <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
-        {CLIENTS.map((c) => (
-          <li
-            key={c}
-            data-reveal
-            className="u-display border-b border-paper-2 pb-4 text-lg text-ink/45"
-          >
-            {c}
-          </li>
-        ))}
-      </ul>
+    <section ref={scope} className="border-t border-paper-2">
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+        <p data-reveal className="u-eyebrow">
+          Shipping with us
+        </p>
+
+        <ul className="mt-10 flex flex-wrap items-center gap-x-14 gap-y-10">
+          {CLIENTS.map((c) => (
+            <li key={c.name} data-reveal>
+              <img
+                src={c.src}
+                alt={c.name}
+                width={c.w}
+                height={c.h}
+                loading="lazy"
+                decoding="async"
+                className="h-8 w-auto opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-9"
+              />
+            </li>
+          ))}
+        </ul>
+
+        <p data-reveal className="u-data mt-10 text-muted">
+          Among eight brands currently on the network.
+        </p>
+      </div>
     </section>
   );
 }

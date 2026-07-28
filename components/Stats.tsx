@@ -3,16 +3,11 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-/**
- * PLACEHOLDER FIGURES.
- * Replace every value with a number you can evidence, or delete this
- * section. Inflated stats are the fastest way to lose a first sales call.
- */
+/** Real figures. Add a fourth only when you have one you can evidence. */
 const STATS = [
+  { value: 143, suffix: "", label: "Riders on our payroll" },
   { value: 5, suffix: "", label: "Hubs live across West Bengal" },
   { value: 8, suffix: "", label: "Brands shipping with us" },
-  { value: 0, suffix: "", label: "Riders on payroll — set this" },
-  { value: 0, suffix: "%", label: "On-time rate — set this" },
 ];
 
 export default function Stats() {
@@ -60,7 +55,7 @@ export default function Stats() {
 
   return (
     <section ref={root} className="border-b border-paper-2 bg-white/40">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 py-14 sm:px-8 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 py-14 sm:px-8 md:grid-cols-3">
         {STATS.map((s) => (
           <div key={s.label} className="border-l border-paper-2 pl-5 first:border-l-0 first:pl-0 md:border-l md:pl-6 md:first:border-l-0 md:first:pl-0">
             <p className="u-display text-[clamp(2rem,4.5vw,2.9rem)]">
