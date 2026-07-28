@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────
+   BM Xpress design tokens
+   The accent palette is the order lifecycle. Every colour on this
+   page except ink and paper means a delivery state.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --color-ink: #0e1319;
+  --color-ink-2: #1a222c;
+  --color-ink-3: #2a3440;
+  --color-paper: #f2f4f1;
+  --color-paper-2: #e3e7e1;
+  --color-muted: #6d7883;
+
+  /* delivery states */
+  --color-queued: #98a2ac;
+  --color-assigned: #e8a33d;
+  --color-transit: #3b6fe0;
+  --color-delivered: #2f9e6b;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-card: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Type scale ------------------------------------------------- */
+.u-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+.u-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.u-data {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Line-mask reveal used by the hero --------------------------- */
+.u-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+/* Focus visibility floor -------------------------------------- */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-transit);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hairline grid used behind the network section ---------------- */
+.u-grid-field {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-paper-2) 90%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-paper-2) 90%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 46px 46px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
