@@ -15,7 +15,7 @@ export default function TrustedBy() {
     <section ref={scope} className="border-t border-paper-2">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <p data-reveal className="u-eyebrow">
-          Shipping with us
+          Trusted by
         </p>
 
         <ul className="mt-10 flex flex-wrap items-center gap-x-14 gap-y-10">
