@@ -132,16 +132,16 @@ body {
 .u-hero-panel {
   background:
     radial-gradient(
-      110% 85% at 8% 6%,
-      color-mix(in oklab, var(--color-transit) 9%, transparent) 0%,
-      transparent 58%
-    ),
-    radial-gradient(
-      95% 75% at 92% 18%,
-      color-mix(in oklab, var(--color-delivered) 10%, transparent) 0%,
+      86% 62% at 74% 8%,
+      color-mix(in oklab, var(--color-transit) 13%, transparent) 0%,
       transparent 62%
     ),
-    linear-gradient(175deg, #ffffff 0%, var(--color-paper) 72%);
+    radial-gradient(
+      70% 58% at 4% 88%,
+      color-mix(in oklab, var(--color-delivered) 12%, transparent) 0%,
+      transparent 60%
+    ),
+    linear-gradient(168deg, #ffffff 0%, #f7f9f6 46%, var(--color-paper) 100%);
 }
 
 /* Glass --------------------------------------------------------- */

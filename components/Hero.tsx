@@ -2,7 +2,13 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import HeroCards from "./HeroCards";
+import DispatchPanel from "./DispatchPanel";
+
+const PROOF = [
+  { v: "143", l: "Riders on payroll" },
+  { v: "5", l: "Hubs across Bengal" },
+  { v: "8", l: "Brands shipping" },
+];
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -18,15 +24,16 @@ export default function Hero() {
         },
         (ctx) => {
           if (ctx.conditions?.reduced) {
-            gsap.set(".hero-line, .hero-fade, .hero-pill", { y: 0, opacity: 1 });
+            gsap.set(".hero-line, .hero-fade, .hero-pill, .hero-proof", { y: 0, opacity: 1 });
             return;
           }
 
           gsap
             .timeline({ defaults: { ease: "power4.out" } })
             .from(".hero-pill", { opacity: 0, y: 12, duration: 0.6 })
-            .from(".hero-line", { yPercent: 108, duration: 1.05, stagger: 0.1 }, "-=0.3")
-            .from(".hero-fade", { y: 18, opacity: 0, duration: 0.75, stagger: 0.1 }, "-=0.5");
+            .from(".hero-line", { yPercent: 106, duration: 1, stagger: 0.09 }, "-=0.3")
+            .from(".hero-fade", { y: 16, opacity: 0, duration: 0.7, stagger: 0.09 }, "-=0.5")
+            .from(".hero-proof", { y: 14, opacity: 0, duration: 0.6, stagger: 0.08 }, "-=0.35");
         }
       );
 
@@ -36,59 +43,62 @@ export default function Hero() {
   );
 
   return (
-    <section id="top" ref={root} className="px-3 pt-3 sm:px-5">
-      <div className="u-hero-panel mx-auto max-w-[1360px] overflow-hidden rounded-[26px] border border-paper-2">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
-          <div className="grid gap-16 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-10">
+    <section id="top" ref={root} className="px-3 pt-3 sm:px-4">
+      <div className="u-hero-panel overflow-hidden rounded-[24px] border border-ink/8">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:px-10 sm:py-20 lg:py-24">
+          <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
             <div>
-              <span className="hero-pill inline-flex items-center gap-2.5 rounded-full border border-paper-2 bg-white/70 py-1.5 pl-2.5 pr-4">
-                <span className="flex gap-1" aria-hidden="true">
-                  {["queued", "assigned", "transit", "delivered"].map((s) => (
-                    <span
-                      key={s}
-                      className="size-1.5 rounded-full"
-                      style={{ background: `var(--color-${s})` }}
-                    />
-                  ))}
-                </span>
+              <span className="hero-pill inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/60 py-1.5 pl-3 pr-4">
+                <span className="size-1.5 rounded-full bg-delivered" aria-hidden="true" />
                 <span className="u-data text-ink/70">
-                  Five hubs live across West Bengal
+                  Operating across five hubs in West Bengal
                 </span>
               </span>
 
-              <h1 className="u-display mt-7 text-[clamp(2.7rem,7.2vw,5rem)]">
+              <h1 className="u-display mt-7 text-[clamp(2.6rem,6vw,4.4rem)]">
                 <span className="u-mask">
-                  <span className="hero-line block">Bengal,</span>
+                  <span className="hero-line block">Bengal, delivered</span>
                 </span>
                 <span className="u-mask">
-                  <span className="hero-line block text-delivered">delivered same day.</span>
+                  <span className="hero-line block">
+                    <span className="text-delivered">same day.</span>
+                  </span>
                 </span>
               </h1>
 
-              <p className="hero-fade mt-7 max-w-lg text-lg leading-relaxed text-ink/75">
-                Around 3,000 deliveries a day across five hubs, on 143 riders we employ and
-                dispatch software we wrote ourselves. Nothing is subcontracted into a
-                black box.
+              <p className="hero-fade mt-7 max-w-lg text-[1.05rem] leading-relaxed text-ink/70">
+                Hyperlocal and last-mile delivery run on our own dispatch platform and our
+                own riders. Nothing is subcontracted into a black box, so you can see where
+                a shipment is at any point in its life.
               </p>
 
               <div className="hero-fade mt-9 flex flex-wrap items-center gap-3">
                 <a
-                  href="#contact"
+                  href="/quote"
                   className="rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper transition-transform duration-200 hover:-translate-y-0.5"
                 >
-                  Book a pilot route
+                  Get a quote
                 </a>
                 <a
                   href="#services"
-                  className="rounded-full border border-ink/20 bg-white/50 px-7 py-3.5 text-sm font-medium text-ink transition-colors duration-200 hover:border-ink/50"
+                  className="rounded-full border border-ink/15 bg-white/50 px-7 py-3.5 text-sm font-medium transition-colors duration-200 hover:border-ink/40"
                 >
                   What we deliver
                 </a>
               </div>
+
+              <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-5 border-t border-ink/8 pt-7">
+                {PROOF.map((p) => (
+                  <div key={p.l} className="hero-proof">
+                    <dt className="u-display text-2xl leading-none">{p.v}</dt>
+                    <dd className="u-data mt-2 text-muted">{p.l}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
 
-            <div className="hero-fade">
-              <HeroCards />
+            <div className="hero-fade lg:pl-4">
+              <DispatchPanel />
             </div>
           </div>
         </div>
