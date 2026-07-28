@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import Fulfilment from "@/components/Fulfilment";
-import Capabilities from "@/components/Capabilities";
 import Testimonials from "@/components/Testimonials";
 import Industries from "@/components/Industries";
 import Lifecycle from "@/components/Lifecycle";
@@ -27,7 +26,6 @@ export default function Page() {
         <TrustedBy />
         <Stats />
         <Services />
-        <Capabilities />
         <Fulfilment />
         <Industries />
         <Lifecycle />

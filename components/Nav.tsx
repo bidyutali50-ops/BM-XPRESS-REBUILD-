@@ -5,7 +5,6 @@ import { gsap, useGSAP } from "@/lib/gsap";
 
 const LINKS = [
   { href: "/#services", label: "Services" },
-  { href: "/#platform", label: "Platform" },
   { href: "/#fulfilment", label: "Fulfilment" },
   { href: "/#network", label: "Network" },
   { href: "/#integrations", label: "Integrations" },
