@@ -1,7 +1,6 @@
 import LifecycleRail from "@/components/LifecycleRail";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import HubStrip from "@/components/HubStrip";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import Industries from "@/components/Industries";
@@ -22,7 +21,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
-        <HubStrip />
+        <TrustedBy />
         <Stats />
         <Services />
         <Industries />
@@ -31,7 +30,6 @@ export default function Page() {
         <Integrations />
         <Technology />
         <Onboarding />
-        <TrustedBy />
         <FAQ />
         <FinalCTA />
       </main>
