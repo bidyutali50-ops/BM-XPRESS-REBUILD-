@@ -7,9 +7,9 @@ import DispatchPanel from "./DispatchPanel";
 import SpecularButton from "./SpecularButton";
 
 const PROOF = [
-  { v: "143", l: "Riders on payroll" },
-  { v: "5", l: "Hubs across Bengal" },
   { v: "8", l: "Brands shipping" },
+  { v: "6", l: "Industries served" },
+  { v: "Same-day", l: "Across West Bengal" },
 ];
 
 export default function Hero() {
@@ -66,7 +66,7 @@ export default function Hero() {
               <span className="hero-pill inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/60 py-1.5 pl-3 pr-4">
                 <span className="size-1.5 rounded-full bg-delivered" aria-hidden="true" />
                 <span className="u-data text-ink/70">
-                  Operating across five hubs in West Bengal
+                  Same-day delivery across West Bengal
                 </span>
               </span>
 
@@ -81,7 +81,7 @@ export default function Hero() {
                 </span>
               </h1>
 
-              <p className="hero-fade mt-7 max-w-lg text-[1.05rem] leading-relaxed text-ink/70">
+              <p className="hero-fade mt-7 max-w-xl text-[1.05rem] leading-relaxed text-ink/70">
                 Hyperlocal and last-mile delivery run on our own dispatch platform and our
                 own riders. Nothing is subcontracted into a black box, so you can see where
                 a shipment is at any point in its life.

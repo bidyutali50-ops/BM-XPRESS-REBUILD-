@@ -3,12 +3,13 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-const HUBS = [
-  { code: "MSD", name: "Murshidabad", note: "Head office" },
-  { code: "RJH", name: "Rajarhat", note: "New Town, Salt Lake" },
-  { code: "KOL", name: "Kolkata", note: "Central and south" },
-  { code: "DKN", name: "Dankuni", note: "Howrah corridor" },
-  { code: "CDN", name: "Chandannagar", note: "Upper Hooghly" },
+const CATEGORIES = [
+  { name: "Retail", note: "Same-day" },
+  { name: "Pharma", note: "Time-bound" },
+  { name: "Grocery", note: "Dark-store" },
+  { name: "Q-commerce", note: "Slotted" },
+  { name: "Food & beverage", note: "Short-radius" },
+  { name: "E-commerce", note: "Doorstep" },
 ];
 
 const STATES = ["queued", "assigned", "transit", "delivered"] as const;
@@ -88,20 +89,22 @@ export default function DispatchPanel() {
       <div className="dp-panel u-card3d u-glass overflow-hidden rounded-[18px]">
         <div className="flex items-center justify-between border-b border-ink/8 px-5 py-4">
           <span className="u-eyebrow">BMX Dispatch</span>
-          <span className="u-data text-muted">5 hubs live</span>
+          <div className="flex items-center gap-1.5">
+            <span className="size-1.5 rounded-full bg-delivered" aria-hidden="true" />
+            <span className="u-data text-muted">Live</span>
+          </div>
         </div>
 
         <ul className="divide-y divide-ink/6">
-          {HUBS.map((h) => (
+          {CATEGORIES.map((c) => (
             <li
-              key={h.code}
-              className="dp-row flex items-center gap-4 px-5 py-3.5 opacity-0 [transform:translateX(-10px)]"
+              key={c.name}
+              className="dp-row flex items-center gap-4 px-5 py-3 opacity-0 [transform:translateX(-10px)]"
             >
-              <span className="u-data w-9 shrink-0 text-transit">{h.code}</span>
               <span className="min-w-0 flex-1 truncate text-[0.92rem] font-medium">
-                {h.name}
+                {c.name}
               </span>
-              <span className="u-data hidden shrink-0 text-muted sm:block">{h.note}</span>
+              <span className="u-data shrink-0 text-muted">{c.note}</span>
               <span
                 className="size-1.5 shrink-0 rounded-full bg-delivered"
                 aria-hidden="true"
@@ -128,7 +131,7 @@ export default function DispatchPanel() {
 
       <div className="dp-badge u-glass absolute -bottom-6 -left-4 rounded-[14px] px-5 py-4 opacity-0 [transform:translateY(14px)_scale(0.94)] sm:-left-8">
         <p className="u-display text-2xl leading-none">3,000+</p>
-        <p className="u-data mt-1.5 text-muted">Deliveries a day</p>
+        <p className="u-data mt-1.5 text-muted">Orders a day</p>
       </div>
     </div>
   );
