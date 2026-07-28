@@ -24,8 +24,8 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/6 bg-ink text-paper">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+    <header className="sticky top-0 z-50 isolate border-b border-white/6 bg-ink text-paper">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 overflow-hidden px-5 sm:px-8">
         <a href="/#top" className="flex shrink-0 items-baseline gap-2">
           <span className="u-display text-xl">BM Xpress</span>
           <span className="u-data hidden text-paper/45 sm:inline">BMX</span>
