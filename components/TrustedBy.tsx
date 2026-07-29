@@ -12,9 +12,6 @@ const CLIENTS = [
 ];
 
 const INTEGRATIONS = [
-  { name: "Shopify", src: "/logos/shopify.jpg", w: 3840, h: 2400 },
-  { name: "WooCommerce", src: "/logos/woocommerce.png", w: 600, h: 600 },
-  { name: "Unicommerce", src: "/logos/unicommerce.svg", w: 200, h: 108 },
   { name: "Shiprocket", src: "/logos/shiprocket.svg", w: 854, h: 190 },
   { name: "ClickPost", src: "/logos/clickpost.webp", w: 660, h: 202 },
   { name: "Fynd", src: "/logos/fynd.svg", w: 148, h: 50 },
