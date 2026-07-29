@@ -4,6 +4,7 @@ import { useState } from "react";
 import GooeyNav from "./GooeyNav";
 
 const PILLS = [
+  { label: "Home", href: "/#top" },
   { label: "Services", href: "/#services" },
   { label: "Industries", href: "/#industries" },
   { label: "Network", href: "/#network" },
@@ -11,6 +12,7 @@ const PILLS = [
 ];
 
 const MOBILE_LINKS = [
+  { label: "Home", href: "/#top" },
   { label: "Services", href: "/#services" },
   { label: "Industries", href: "/#industries" },
   { label: "How it runs", href: "/#lifecycle" },
