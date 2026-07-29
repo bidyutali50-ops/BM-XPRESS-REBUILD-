@@ -1,6 +1,7 @@
 "use client";
 
 import { useReveal } from "@/lib/useReveal";
+import Lightfall from "./Lightfall";
 
 const POINTS = [
   {
@@ -21,8 +22,31 @@ export default function Technology() {
   const scope = useReveal<HTMLElement>(0.1);
 
   return (
-    <section id="technology" ref={scope} className="bg-ink text-paper">
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section
+      id="technology"
+      ref={scope}
+      className="relative overflow-hidden bg-ink text-paper"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <Lightfall
+          colors={["#3b6fe0", "#2f9e6b", "#e8a33d"]}
+          backgroundColor="#0e1319"
+          speed={0.25}
+          streakCount={3}
+          streakWidth={0.9}
+          streakLength={1.4}
+          glow={0.6}
+          density={0.5}
+          twinkle={0.6}
+          zoom={3}
+          backgroundGlow={0.35}
+          opacity={0.55}
+          mouseInteraction
+          mouseStrength={0.4}
+          mouseRadius={0.6}
+        />
+      </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
         <p data-reveal className="u-eyebrow text-paper/45">
           Why we build our own
         </p>
