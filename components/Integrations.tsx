@@ -7,13 +7,15 @@ import { useReveal } from "@/lib/useReveal";
  * automatically. Until a file exists the wordmark shows instead, which is
  * honest and still legible.
  */
-const WAYS = [
-  { name: "Shopify", slug: "shopify", note: "Orders sync from your store", logo: false },
-  { name: "WooCommerce", slug: "woocommerce", note: "Plugin or webhook", logo: false },
-  { name: "Unicommerce", slug: "unicommerce", note: "OMS handover", logo: false },
-  { name: "Shiprocket", slug: "shiprocket", note: "Aggregator handover", logo: true },
-  { name: "REST API", slug: "api", note: "Push orders, pull status", logo: false },
-  { name: "Excel or CSV", slug: "csv", note: "Upload a file, no build", logo: false },
+type Way = { name: string; note: string; logo: string | null };
+
+const WAYS: Way[] = [
+  { name: "Shopify", note: "Orders sync from your store", logo: "/integrations/shopify.jpg" },
+  { name: "WooCommerce", note: "Plugin or webhook", logo: "/integrations/woocommerce.png" },
+  { name: "Unicommerce", note: "OMS handover", logo: "/integrations/unicommerce.svg" },
+  { name: "Shiprocket", note: "Aggregator handover", logo: "/integrations/shiprocket.svg" },
+  { name: "REST API", note: "Push orders, pull status", logo: null },
+  { name: "Excel or CSV", note: "Upload a file, no build", logo: null },
 ];
 
 export default function Integrations() {
@@ -43,7 +45,7 @@ export default function Integrations() {
                 <div className="flex h-7 items-center">
                   {w.logo ? (
                     <img
-                      src={`/integrations/${w.slug}.svg`}
+                      src={w.logo}
                       alt={w.name}
                       className="max-h-full w-auto max-w-[112px] object-contain"
                       loading="lazy"
