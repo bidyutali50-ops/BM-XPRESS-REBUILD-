@@ -3,14 +3,8 @@
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { gsap, useGSAP } from "@/lib/gsap";
-import DispatchPanel from "./DispatchPanel";
+import RoutePanel from "./RoutePanel";
 import SpecularButton from "./SpecularButton";
-
-const PROOF = [
-  { v: "8", l: "Brands shipping" },
-  { v: "6", l: "Industries served" },
-  { v: "Same-day", l: "Across West Bengal" },
-];
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -27,7 +21,7 @@ export default function Hero() {
         },
         (ctx) => {
           if (ctx.conditions?.reduced) {
-            gsap.set(".hero-line, .hero-fade, .hero-pill, .hero-proof", { y: 0, opacity: 1 });
+            gsap.set(".hero-line, .hero-fade, .hero-pill", { y: 0, opacity: 1 });
             return;
           }
 
@@ -35,8 +29,7 @@ export default function Hero() {
             .timeline({ defaults: { ease: "power4.out" } })
             .from(".hero-pill", { opacity: 0, y: 12, duration: 0.6 })
             .from(".hero-line", { yPercent: 106, duration: 1, stagger: 0.09 }, "-=0.3")
-            .from(".hero-fade", { y: 16, opacity: 0, duration: 0.7, stagger: 0.09 }, "-=0.5")
-            .from(".hero-proof", { y: 14, opacity: 0, duration: 0.6, stagger: 0.08 }, "-=0.35");
+            .from(".hero-fade", { y: 16, opacity: 0, duration: 0.7, stagger: 0.09 }, "-=0.5");
 
           gsap.to(".hero-parallax", {
             y: -70,
@@ -66,17 +59,17 @@ export default function Hero() {
               <span className="hero-pill inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/60 py-1.5 pl-3 pr-4">
                 <span className="size-1.5 rounded-full bg-delivered" aria-hidden="true" />
                 <span className="u-data text-ink/70">
-                  Same-day delivery across West Bengal
+                  Same-day and next-day across West Bengal
                 </span>
               </span>
 
               <h1 className="u-display mt-7 text-[clamp(2.6rem,6vw,4.4rem)]">
                 <span className="u-mask">
-                  <span className="hero-line block">Bengal, delivered</span>
+                  <span className="hero-line block">Same-day, next-day.</span>
                 </span>
                 <span className="u-mask">
                   <span className="hero-line block">
-                    <span className="text-delivered">same day.</span>
+                    <span className="text-delivered">3,000+ times a day.</span>
                   </span>
                 </span>
               </h1>
@@ -113,18 +106,10 @@ export default function Hero() {
                 </a>
               </div>
 
-              <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-5 border-t border-ink/8 pt-7">
-                {PROOF.map((p) => (
-                  <div key={p.l} className="hero-proof">
-                    <dt className="u-display text-2xl leading-none">{p.v}</dt>
-                    <dd className="u-data mt-2 text-muted">{p.l}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
 
             <div className="hero-fade lg:pl-4">
-              <DispatchPanel />
+              <RoutePanel />
             </div>
           </div>
         </div>
