@@ -10,7 +10,6 @@ import Testimonials from "@/components/Testimonials";
 import Lifecycle from "@/components/Lifecycle";
 import Network from "@/components/Network";
 import Integrations from "@/components/Integrations";
-import Technology from "@/components/Technology";
 import Onboarding from "@/components/Onboarding";
 import TrustedBy from "@/components/TrustedBy";
 import FAQ from "@/components/FAQ";
@@ -33,7 +32,6 @@ export default function Page() {
         <Lifecycle />
         <Network />
         <Integrations />
-        <Technology />
         <Onboarding />
         <Testimonials />
         <FAQ />
