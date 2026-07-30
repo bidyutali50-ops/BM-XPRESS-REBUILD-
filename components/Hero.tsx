@@ -131,26 +131,6 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Bottom rail — three service tiers as micro-signals */}
-        <div className="hero-fade mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-white/10 pt-8 sm:mt-20">
-          {[
-            { label: "Hyperlocal", detail: "Under 60 min", state: "transit" },
-            { label: "Same-day", detail: "Within city", state: "assigned" },
-            { label: "Next-day", detail: "Bengal-wide", state: "delivered" },
-          ].map((t) => (
-            <div key={t.label} className="flex items-center gap-2">
-              <span
-                className="size-1.5 rounded-full"
-                style={{ background: `var(--color-${t.state})` }}
-                aria-hidden="true"
-              />
-              <span className="u-data" style={{ color: `var(--color-${t.state})` }}>
-                {t.label}
-              </span>
-              <span className="u-data text-paper/40">{t.detail}</span>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
