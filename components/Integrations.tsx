@@ -7,14 +7,24 @@ import { useReveal } from "@/lib/useReveal";
  * automatically. Until a file exists the wordmark shows instead, which is
  * honest and still legible.
  */
-type Way = { name: string; note: string; logo: string | null };
+type Way = {
+  name: string;
+  note: string;
+  logo: string | null;
+  href?: string;
+};
 
 const WAYS: Way[] = [
   { name: "Shopify", note: "Orders sync from your store", logo: "/integrations/shopify.jpg" },
   { name: "WooCommerce", note: "Plugin or webhook", logo: "/integrations/woocommerce.png" },
   { name: "Unicommerce", note: "OMS handover", logo: "/integrations/unicommerce.svg" },
   { name: "Shiprocket", note: "Aggregator handover", logo: "/integrations/shiprocket.svg" },
-  { name: "REST API", note: "Push orders, pull status", logo: null },
+  {
+    name: "REST API",
+    note: "Create shipments, pull status",
+    logo: null,
+    href: "https://api.scm.fynd.com/tms/service/public/hyperlocal/redoc",
+  },
   { name: "Excel or CSV", note: "Upload a file, no build", logo: null },
 ];
 
@@ -40,23 +50,48 @@ export default function Integrations() {
           </div>
 
           <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-card bg-paper-2 sm:grid-cols-3">
-            {WAYS.map((w) => (
-              <li key={w.name} data-reveal className="flex flex-col bg-paper p-5">
-                <div className="flex h-7 items-center">
-                  {w.logo ? (
-                    <img
-                      src={w.logo}
-                      alt={w.name}
-                      className="max-h-full w-auto max-w-[112px] object-contain"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span className="u-display text-base">{w.name}</span>
+            {WAYS.map((w) => {
+              const Inner = (
+                <>
+                  <div className="flex h-7 items-center">
+                    {w.logo ? (
+                      <img
+                        src={w.logo}
+                        alt={w.name}
+                        className="max-h-full w-auto max-w-[112px] object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="u-display text-base">{w.name}</span>
+                    )}
+                  </div>
+                  <p className="u-data mt-2 text-muted">{w.note}</p>
+                  {w.href && (
+                    <p className="u-data mt-3 inline-flex items-center gap-1.5 text-transit">
+                      View API reference
+                      <span aria-hidden="true">&rarr;</span>
+                    </p>
                   )}
-                </div>
-                <p className="u-data mt-2 text-muted">{w.note}</p>
-              </li>
-            ))}
+                </>
+              );
+
+              return (
+                <li key={w.name} data-reveal className="bg-paper">
+                  {w.href ? (
+                    <a
+                      href={w.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex h-full flex-col p-5 transition-colors hover:bg-white/70"
+                    >
+                      {Inner}
+                    </a>
+                  ) : (
+                    <div className="flex h-full flex-col p-5">{Inner}</div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
