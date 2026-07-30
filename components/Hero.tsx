@@ -48,9 +48,9 @@ export default function Hero() {
   const heroStyle = useMemo(
     () => ({
       background: `
-        radial-gradient(55% 60% at 12% 18%, color-mix(in oklab, var(--color-transit) 14%, #ffffff) 0%, transparent 65%),
-        radial-gradient(50% 55% at 88% 78%, color-mix(in oklab, var(--color-delivered) 12%, #ffffff) 0%, transparent 65%),
-        linear-gradient(180deg, #f7f9f6 0%, var(--color-paper) 100%)
+        radial-gradient(45% 55% at 10% 15%, color-mix(in oklab, var(--color-transit) 8%, #ffffff) 0%, transparent 65%),
+        radial-gradient(45% 55% at 92% 82%, color-mix(in oklab, var(--color-delivered) 7%, #ffffff) 0%, transparent 65%),
+        linear-gradient(180deg, #ffffff 0%, #f7faf6 100%)
       `,
     }),
     []
@@ -113,6 +113,18 @@ export default function Hero() {
             >
               What we deliver
             </a>
+          </div>
+
+          <div className="hero-fade mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-2">
+            <span className="u-display text-[clamp(1.1rem,2.2vw,1.55rem)] font-bold text-transit">
+              Under 60 min
+            </span>
+            <span className="u-display text-[clamp(1.1rem,2.2vw,1.55rem)] font-bold text-assigned">
+              Same-day
+            </span>
+            <span className="u-display text-[clamp(1.1rem,2.2vw,1.55rem)] font-bold text-delivered">
+              Next-day
+            </span>
           </div>
         </div>
 

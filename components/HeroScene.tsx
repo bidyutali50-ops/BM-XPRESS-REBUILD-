@@ -4,11 +4,9 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 /**
- * Isometric delivery-hub scene: BMX hub, stacked packages, delivery
- * bike in the foreground. Hand-drawn SVG, palette-native (transit blue,
- * delivered green, assigned amber on paper). Not a clone of anything
- * — inspired by the Zippee-style illustrated-hero pattern that's now
- * a category convention (Zippee, Blinkit, Zepto all use variations).
+ * Isometric delivery-hub scene, hand-drawn in SVG using the BMX palette.
+ * Same category convention as Zippee/Blinkit/Zepto illustrated heroes,
+ * entirely original composition and assets.
  */
 export default function HeroScene() {
   const root = useRef<SVGSVGElement>(null);
@@ -24,7 +22,7 @@ export default function HeroScene() {
         (ctx) => {
           if (ctx.conditions?.reduced) return;
 
-          // Wheels spinning (kept subtle so it doesn't demand attention)
+          // Wheels spin
           gsap.to(".hs-wheel", {
             rotation: 360,
             duration: 2,
@@ -34,7 +32,7 @@ export default function HeroScene() {
             svgOrigin: "0 0",
           });
 
-          // Motion lines pulse (fade in, fade out)
+          // Motion lines pulse
           gsap.to(".hs-motion", {
             opacity: 0.15,
             duration: 0.9,
@@ -44,21 +42,31 @@ export default function HeroScene() {
             ease: "sine.inOut",
           });
 
-          // Small "delivery pulse" leaves the hub, rides an arc to bike
+          // Delivery pulse: bike → customer
           gsap.timeline({ repeat: -1, defaults: { ease: "power2.inOut" } })
             .set(".hs-pulse", { opacity: 0, x: 0, y: 0 })
             .to(".hs-pulse", { opacity: 1, duration: 0.35 })
-            .to(".hs-pulse", { x: -180, y: 30, duration: 1.8 }, "<")
+            .to(".hs-pulse", { x: 220, y: 40, duration: 2.2 }, "<")
             .to(".hs-pulse", { opacity: 0, duration: 0.3 }, "-=0.3")
-            .to({}, { duration: 1.6 });
+            .to({}, { duration: 1.4 });
 
-          // Package stack has a subtle bob (as if just placed)
+          // Package stack bobs gently
           gsap.to(".hs-packages", {
             y: -3,
             duration: 2.4,
             yoyo: true,
             repeat: -1,
             ease: "sine.inOut",
+          });
+
+          // Worker slight sway
+          gsap.to(".hs-worker", {
+            rotation: 2,
+            duration: 2,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+            transformOrigin: "50% 100%",
           });
         }
       );
@@ -70,10 +78,10 @@ export default function HeroScene() {
   return (
     <svg
       ref={root}
-      viewBox="0 0 800 600"
+      viewBox="0 0 900 620"
       className="h-auto w-full"
       role="img"
-      aria-label="Isometric illustration of a BMX Xpress hub with stacked packages and a delivery bike"
+      aria-label="Isometric illustration of a BM Xpress delivery hub with a truck, delivery bike, packages, and workers"
     >
       <defs>
         <linearGradient id="hs-ground" x1="0" y1="0" x2="0" y2="1">
@@ -82,55 +90,53 @@ export default function HeroScene() {
         </linearGradient>
       </defs>
 
-      {/* Ground shadow */}
-      <ellipse cx="450" cy="530" rx="330" ry="26" fill="url(#hs-ground)" />
+      {/* Ground shadow band */}
+      <ellipse cx="480" cy="555" rx="380" ry="24" fill="url(#hs-ground)" />
 
-      {/* ─── Warehouse (right side of scene) ─── */}
+      {/* ─── Truck (back-left, arriving) ─── */}
       <g>
-        {/* Right side face (in shadow) */}
-        <path
-          d="M600 250 L660 220 L660 460 L600 490 Z"
-          fill="#e3e7e1"
-        />
-        {/* Front face */}
-        <path
-          d="M370 250 L600 250 L600 490 L370 490 Z"
-          fill="#ffffff"
-          stroke="#0e1319"
-          strokeWidth="2"
-        />
-        <path
-          d="M600 250 L660 220 L660 460 L600 490"
-          fill="none"
-          stroke="#0e1319"
-          strokeWidth="2"
-        />
-        {/* Roof (top) */}
-        <path
-          d="M370 250 L600 250 L660 220 L430 220 Z"
-          fill="#2f9e6b"
-          stroke="#0e1319"
-          strokeWidth="2"
-        />
-        {/* Roof accent stripe */}
-        <path
-          d="M430 220 L660 220"
-          stroke="rgba(255,255,255,0.35)"
-          strokeWidth="4"
-        />
+        {/* Cargo body */}
+        <rect x="50" y="230" width="120" height="90" fill="#f2f4f1" stroke="#0e1319" strokeWidth="2" />
+        {/* Cargo top edge (perspective) */}
+        <path d="M50 230 L70 220 L190 220 L170 230 Z" fill="#e3e7e1" stroke="#0e1319" strokeWidth="2" />
+        {/* Cargo right edge (perspective) */}
+        <path d="M170 230 L190 220 L190 310 L170 320 Z" fill="#e3e7e1" stroke="#0e1319" strokeWidth="2" />
+        {/* Cab */}
+        <path d="M170 260 L215 260 L215 320 L170 320 Z" fill="#3b6fe0" stroke="#0e1319" strokeWidth="2" />
+        {/* Windshield */}
+        <path d="M178 268 L207 268 L207 292 L178 292 Z" fill="#0e1319" fillOpacity="0.15" />
+        <path d="M178 268 L207 268 L207 292 L178 292 Z" fill="none" stroke="#0e1319" strokeWidth="1.5" />
+        {/* Cargo door lines */}
+        <path d="M110 230 L110 320 M50 275 L170 275" stroke="#0e1319" strokeWidth="1" opacity="0.35" />
+        {/* Truck wheels (static) */}
+        <g>
+          <ellipse cx="85" cy="325" rx="14" ry="4" fill="#0e1319" opacity="0.35" />
+          <circle cx="85" cy="322" r="12" fill="#0e1319" />
+          <circle cx="85" cy="322" r="5" fill="#f2f4f1" stroke="#0e1319" strokeWidth="1" />
+        </g>
+        <g>
+          <ellipse cx="185" cy="325" rx="14" ry="4" fill="#0e1319" opacity="0.35" />
+          <circle cx="185" cy="322" r="12" fill="#0e1319" />
+          <circle cx="185" cy="322" r="5" fill="#f2f4f1" stroke="#0e1319" strokeWidth="1" />
+        </g>
+      </g>
 
-        {/* BMX label plaque */}
-        <rect
-          x="390"
-          y="270"
-          width="150"
-          height="42"
-          rx="4"
-          fill="#0e1319"
-        />
+      {/* ─── Warehouse (centre) ─── */}
+      <g>
+        {/* Right side face */}
+        <path d="M600 240 L660 210 L660 460 L600 490 Z" fill="#e3e7e1" />
+        {/* Front face */}
+        <path d="M340 240 L600 240 L600 490 L340 490 Z" fill="#ffffff" stroke="#0e1319" strokeWidth="2" />
+        <path d="M600 240 L660 210 L660 460 L600 490" fill="none" stroke="#0e1319" strokeWidth="2" />
+        {/* Roof */}
+        <path d="M340 240 L600 240 L660 210 L400 210 Z" fill="#2f9e6b" stroke="#0e1319" strokeWidth="2" />
+        <path d="M400 210 L660 210" stroke="rgba(255,255,255,0.35)" strokeWidth="4" />
+
+        {/* Brand plaque */}
+        <rect x="360" y="260" width="160" height="42" rx="4" fill="#0e1319" />
         <text
-          x="465"
-          y="299"
+          x="440"
+          y="289"
           fill="#f2f4f1"
           fontSize="22"
           fontWeight="800"
@@ -143,8 +149,8 @@ export default function HeroScene() {
 
         {/* Window */}
         <rect
-          x="395"
-          y="335"
+          x="365"
+          y="325"
           width="80"
           height="60"
           fill="#3b6fe0"
@@ -152,132 +158,112 @@ export default function HeroScene() {
           stroke="#0e1319"
           strokeWidth="2"
         />
-        <path
-          d="M435 335 L435 395 M395 365 L475 365"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
+        <path d="M405 325 L405 385 M365 355 L445 355" stroke="#0e1319" strokeWidth="1.5" />
 
-        {/* Door */}
-        <rect
-          x="495"
-          y="360"
-          width="80"
-          height="130"
-          fill="#2f9e6b"
-          stroke="#0e1319"
-          strokeWidth="2"
-        />
-        <circle cx="560" cy="425" r="3" fill="#0e1319" />
-
-        {/* "Delivery pulse" — leaves the warehouse */}
-        <circle
-          className="hs-pulse"
-          cx="535"
-          cy="425"
-          r="6"
-          fill="#3b6fe0"
-          opacity="0"
-          filter="drop-shadow(0 0 4px #3b6fe0)"
-        />
+        {/* Loading bay door (green) */}
+        <rect x="475" y="350" width="110" height="140" fill="#2f9e6b" stroke="#0e1319" strokeWidth="2" />
+        {/* horizontal slats */}
+        <g stroke="rgba(255,255,255,0.25)" strokeWidth="1.5">
+          <line x1="475" y1="380" x2="585" y2="380" />
+          <line x1="475" y1="410" x2="585" y2="410" />
+          <line x1="475" y1="440" x2="585" y2="440" />
+          <line x1="475" y1="470" x2="585" y2="470" />
+        </g>
+        <rect x="475" y="350" width="110" height="140" fill="none" stroke="#0e1319" strokeWidth="2" />
       </g>
 
-      {/* ─── Package stack (left of hub) ─── */}
+      {/* ─── Package stack ─── */}
       <g className="hs-packages">
-        {/* Bottom box */}
         <path d="M270 460 L340 460 L358 448 L288 448 Z" fill="#c9ad84" />
-        <path
-          d="M270 460 L270 500 L340 500 L340 460 Z"
-          fill="#d4b689"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M340 460 L358 448 L358 488 L340 500 Z"
-          fill="#b39066"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M270 460 L340 460 L358 448 L288 448 Z"
-          fill="none"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
+        <path d="M270 460 L270 500 L340 500 L340 460 Z" fill="#d4b689" stroke="#0e1319" strokeWidth="1.5" />
+        <path d="M340 460 L358 448 L358 488 L340 500 Z" fill="#b39066" stroke="#0e1319" strokeWidth="1.5" />
+        <path d="M270 460 L340 460 L358 448 L288 448 Z" fill="none" stroke="#0e1319" strokeWidth="1.5" />
         <line x1="305" y1="448" x2="305" y2="500" stroke="#0e1319" strokeWidth="1" opacity="0.35" />
 
-        {/* Middle box */}
         <path d="M285 425 L345 425 L361 413 L301 413 Z" fill="#c9ad84" />
-        <path
-          d="M285 425 L285 458 L345 458 L345 425 Z"
-          fill="#d4b689"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M345 425 L361 413 L361 446 L345 458 Z"
-          fill="#b39066"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M285 425 L345 425 L361 413 L301 413 Z"
-          fill="none"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <line x1="315" y1="425" x2="315" y2="458" stroke="#0e1319" strokeWidth="1" opacity="0.35" />
+        <path d="M285 425 L285 458 L345 458 L345 425 Z" fill="#d4b689" stroke="#0e1319" strokeWidth="1.5" />
+        <path d="M345 425 L361 413 L361 446 L345 458 Z" fill="#b39066" stroke="#0e1319" strokeWidth="1.5" />
+        <path d="M285 425 L345 425 L361 413 L301 413 Z" fill="none" stroke="#0e1319" strokeWidth="1.5" />
 
-        {/* Top box — with delivered-green tape */}
         <path d="M300 390 L350 390 L364 379 L314 379 Z" fill="#c9ad84" />
-        <path
-          d="M300 390 L300 423 L350 423 L350 390 Z"
-          fill="#d4b689"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M350 390 L364 379 L364 411 L350 423 Z"
-          fill="#b39066"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M300 390 L350 390 L364 379 L314 379 Z"
-          fill="none"
-          stroke="#0e1319"
-          strokeWidth="1.5"
-        />
-        {/* tape */}
+        <path d="M300 390 L300 423 L350 423 L350 390 Z" fill="#d4b689" stroke="#0e1319" strokeWidth="1.5" />
+        <path d="M350 390 L364 379 L364 411 L350 423 Z" fill="#b39066" stroke="#0e1319" strokeWidth="1.5" />
+        <path d="M300 390 L350 390 L364 379 L314 379 Z" fill="none" stroke="#0e1319" strokeWidth="1.5" />
         <rect x="322" y="379" width="10" height="44" fill="#2f9e6b" />
-        <line x1="325" y1="381" x2="332" y2="374" stroke="#2f9e6b" strokeWidth="2.5" />
       </g>
+
+      {/* ─── Worker (loading, near packages) ─── */}
+      <g className="hs-worker">
+        <circle cx="245" cy="425" r="11" fill="#e8a33d" stroke="#0e1319" strokeWidth="1.5" />
+        <path
+          d="M232 436 Q238 448 245 452 Q252 448 258 436 L262 490 L228 490 Z"
+          fill="#e8a33d"
+          stroke="#0e1319"
+          strokeWidth="1.5"
+        />
+        <rect x="230" y="490" width="12" height="30" fill="#0e1319" />
+        <rect x="248" y="490" width="12" height="30" fill="#0e1319" />
+        <path d="M258 445 L275 460" stroke="#e8a33d" strokeWidth="8" strokeLinecap="round" />
+        <path d="M258 445 L275 460" stroke="#0e1319" strokeWidth="1.5" fill="none" />
+      </g>
+
+      {/* ─── Customer (foreground right, receiving) ─── */}
+      <g>
+        <circle cx="770" cy="435" r="12" fill="#3b6fe0" stroke="#0e1319" strokeWidth="1.5" />
+        <path
+          d="M756 447 Q762 460 770 464 Q778 460 784 447 L788 510 L752 510 Z"
+          fill="#3b6fe0"
+          stroke="#0e1319"
+          strokeWidth="1.5"
+        />
+        <rect x="754" y="510" width="13" height="30" fill="#0e1319" />
+        <rect x="773" y="510" width="13" height="30" fill="#0e1319" />
+        {/* arms outstretched — receiving */}
+        <path d="M756 458 L735 468" stroke="#3b6fe0" strokeWidth="8" strokeLinecap="round" />
+        <path d="M756 458 L735 468" stroke="#0e1319" strokeWidth="1.5" fill="none" />
+        <path d="M784 458 L800 465" stroke="#3b6fe0" strokeWidth="8" strokeLinecap="round" />
+        <path d="M784 458 L800 465" stroke="#0e1319" strokeWidth="1.5" fill="none" />
+        {/* Small parcel in hands */}
+        <rect x="720" y="460" width="22" height="18" rx="1" fill="#d4b689" stroke="#0e1319" strokeWidth="1.5" />
+        <rect x="729" y="460" width="4" height="18" fill="#2f9e6b" />
+      </g>
+
+      {/* Delivery pulse: rides from bike toward customer */}
+      <circle
+        className="hs-pulse"
+        cx="500"
+        cy="480"
+        r="6"
+        fill="#3b6fe0"
+        opacity="0"
+        filter="drop-shadow(0 0 4px #3b6fe0)"
+      />
 
       {/* ─── Motion lines (behind bike) ─── */}
       <g stroke="#3b6fe0" strokeWidth="3" strokeLinecap="round">
-        <line className="hs-motion" x1="30" y1="440" x2="80" y2="440" opacity="0.5" />
-        <line className="hs-motion" x1="50" y1="470" x2="105" y2="470" opacity="0.65" />
-        <line className="hs-motion" x1="30" y1="500" x2="90" y2="500" opacity="0.5" />
+        <line className="hs-motion" x1="285" y1="440" x2="330" y2="440" opacity="0.5" />
+        <line className="hs-motion" x1="305" y1="470" x2="360" y2="470" opacity="0.65" />
+        <line className="hs-motion" x1="285" y1="500" x2="345" y2="500" opacity="0.5" />
       </g>
 
-      {/* ─── Delivery bike (foreground left) ─── */}
+      {/* ─── Delivery bike (foreground, mid-scene) ─── */}
       <g>
-        {/* Cargo box (rear) */}
-        <path d="M100 430 L155 430 L160 465 L105 465 Z" fill="#3b6fe0" />
-        <path d="M100 430 L100 490 L155 490 L155 430 Z" fill="#3b6fe0" />
-        <path d="M155 430 L160 465 L160 490 L155 490 Z" fill="#2e5abf" />
+        {/* Cargo box */}
+        <path d="M355 430 L410 430 L415 465 L360 465 Z" fill="#3b6fe0" />
+        <path d="M355 430 L355 490 L410 490 L410 430 Z" fill="#3b6fe0" />
+        <path d="M410 430 L415 465 L415 490 L410 490 Z" fill="#2e5abf" />
         <path
-          d="M100 430 L155 430 L160 465 L105 465 M100 430 L100 490 L155 490 L155 430 M155 490 L160 490 L160 465"
+          d="M355 430 L410 430 L415 465 L360 465 M355 430 L355 490 L410 490 L410 430 M410 490 L415 490 L415 465"
           fill="none"
           stroke="#0e1319"
           strokeWidth="2"
           strokeLinejoin="round"
         />
-        <path d="M117 460 L138 460" stroke="#f2f4f1" strokeWidth="1.5" opacity="0.7" />
+        <path d="M372 460 L393 460" stroke="#f2f4f1" strokeWidth="1.5" opacity="0.7" />
 
         {/* Frame */}
         <path
-          d="M155 500 L185 460 L235 460 L265 500"
+          d="M410 500 L440 460 L490 460 L520 500"
           stroke="#0e1319"
           strokeWidth="4.5"
           strokeLinecap="round"
@@ -285,33 +271,28 @@ export default function HeroScene() {
           fill="none"
         />
 
-        {/* Handlebar + light */}
-        <path
-          d="M262 462 L280 445"
-          stroke="#0e1319"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        <circle cx="285" cy="443" r="4" fill="#e8a33d" />
+        {/* Handlebar */}
+        <path d="M517 462 L535 445" stroke="#0e1319" strokeWidth="4" strokeLinecap="round" />
+        <circle cx="540" cy="443" r="4" fill="#e8a33d" />
 
-        {/* Rider silhouette */}
-        <circle cx="215" cy="430" r="14" fill="#e8a33d" stroke="#0e1319" strokeWidth="2" />
+        {/* Rider */}
+        <circle cx="470" cy="430" r="14" fill="#e8a33d" stroke="#0e1319" strokeWidth="2" />
         <path
-          d="M203 442 Q210 465 235 465 Q245 465 250 458"
+          d="M458 442 Q465 465 490 465 Q500 465 505 458"
           stroke="#e8a33d"
           strokeWidth="18"
           strokeLinecap="round"
           fill="none"
         />
         <path
-          d="M203 442 Q210 465 235 465 Q245 465 250 458"
+          d="M458 442 Q465 465 490 465 Q500 465 505 458"
           stroke="#0e1319"
           strokeWidth="2"
           fill="none"
         />
 
         {/* Rear wheel */}
-        <g transform="translate(155 500)">
+        <g transform="translate(410 500)">
           <circle cx="0" cy="0" r="24" fill="#0e1319" />
           <circle cx="0" cy="0" r="14" fill="#f2f4f1" stroke="#0e1319" strokeWidth="1.5" />
           <g className="hs-wheel" style={{ transformOrigin: "0 0" }}>
@@ -322,7 +303,7 @@ export default function HeroScene() {
         </g>
 
         {/* Front wheel */}
-        <g transform="translate(265 500)">
+        <g transform="translate(520 500)">
           <circle cx="0" cy="0" r="24" fill="#0e1319" />
           <circle cx="0" cy="0" r="14" fill="#f2f4f1" stroke="#0e1319" strokeWidth="1.5" />
           <g className="hs-wheel" style={{ transformOrigin: "0 0" }}>
