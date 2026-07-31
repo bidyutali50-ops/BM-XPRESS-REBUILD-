@@ -174,31 +174,42 @@ export default function Integrations() {
                 />
 
                 {/* Fixed-height logo/icon row so every card starts identically */}
-                <div className="flex h-8 items-center">
+                <div className="flex h-10 items-center">
                   {w.logo ? (
                     <img
                       src={w.logo}
                       alt={w.name}
-                      className="max-h-8 w-auto max-w-[130px] object-contain object-left"
+                      className="max-h-10 w-auto max-w-[160px] object-contain object-left"
                       loading="lazy"
                       decoding="async"
                     />
                   ) : (
                     <span
-                      className="flex size-8 items-center justify-center"
-                      style={{ color: `var(--color-${w.state})` }}
+                      className="flex size-10 items-center justify-center rounded-[12px] p-2"
+                      style={{
+                        color: `var(--color-${w.state})`,
+                        background: `color-mix(in oklab, var(--color-${w.state}) 14%, #ffffff)`,
+                      }}
                     >
                       {w.icon}
                     </span>
                   )}
                 </div>
 
-                <div className="mt-5">
-                  <p className="u-display text-lg leading-none">{w.name}</p>
-                  <p className="mt-2 text-[0.9rem] leading-relaxed text-ink/65">
+                {/* For logo cards the wordmark IS the title, so we skip the redundant h3.
+                    For icon cards we still need the label. */}
+                {w.logo ? (
+                  <p className="mt-6 text-[0.9rem] leading-relaxed text-ink/65">
                     {w.note}
                   </p>
-                </div>
+                ) : (
+                  <div className="mt-5">
+                    <p className="u-display text-lg leading-none">{w.name}</p>
+                    <p className="mt-2 text-[0.9rem] leading-relaxed text-ink/65">
+                      {w.note}
+                    </p>
+                  </div>
+                )}
 
                 {w.href && (
                   <p className="u-data mt-auto inline-flex items-center gap-1.5 pt-4 text-transit">
