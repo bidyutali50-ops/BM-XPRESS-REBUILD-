@@ -1,49 +1,20 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useMemo, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { gsap, useGSAP } from "@/lib/gsap";
 import SpecularButton from "./SpecularButton";
 import HeroScene from "./HeroScene";
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
   const router = useRouter();
+  const [awb, setAwb] = useState("");
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add(
-        {
-          motion: "(prefers-reduced-motion: no-preference)",
-          reduced: "(prefers-reduced-motion: reduce)",
-        },
-        (ctx) => {
-          if (ctx.conditions?.reduced) {
-            gsap.set(".hero-line, .hero-fade, .hero-pill, .hero-scene", {
-              y: 0,
-              opacity: 1,
-              scale: 1,
-            });
-            return;
-          }
-
-          gsap
-            .timeline({ defaults: { ease: "power4.out" } })
-            .from(".hero-pill", { opacity: 0, y: 12, duration: 0.7 })
-            .from(".hero-line", { yPercent: 108, duration: 1.05, stagger: 0.1 }, "-=0.35")
-            .from(".hero-fade", { y: 18, opacity: 0, duration: 0.8, stagger: 0.1 }, "-=0.5")
-            .from(
-              ".hero-scene",
-              { opacity: 0, scale: 0.94, duration: 1, ease: "power3.out" },
-              "-=1.15"
-            );
-        }
-      );
-      return () => mm.revert();
-    },
-    { scope: root }
-  );
+  const handleTrack = (e: FormEvent) => {
+    e.preventDefault();
+    const clean = awb.trim();
+    router.push(clean ? `/track?awb=${encodeURIComponent(clean)}` : "/track");
+  };
 
   const heroStyle = useMemo(
     () => ({
@@ -65,9 +36,9 @@ export default function Hero() {
     >
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-10 lg:py-24">
         <div>
-          <span className="hero-pill inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/60 py-1.5 pl-3 pr-4 backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/60 py-1.5 pl-3 pr-4 backdrop-blur-sm">
             <span
-              className="rp-pulse size-1.5 rounded-full bg-delivered"
+              className="size-1.5 rounded-full bg-delivered"
               aria-hidden="true"
             />
             <span className="u-data text-ink/70">
@@ -76,20 +47,16 @@ export default function Hero() {
           </span>
 
           <h1 className="u-display mt-7 text-[clamp(2.7rem,7vw,5rem)] leading-[0.94] tracking-tight">
-            <span className="u-mask block">
-              <span className="hero-line block">Bengal, delivered</span>
-            </span>
-            <span className="u-mask block">
-              <span className="hero-line block text-delivered">same day.</span>
-            </span>
+            <span className="block">Bengal, delivered</span>
+            <span className="block text-delivered">same day.</span>
           </h1>
 
-          <p className="hero-fade mt-7 max-w-lg text-[1.05rem] leading-relaxed text-ink/70">
+          <p className="mt-7 max-w-lg text-[1.05rem] leading-relaxed text-ink/70">
             3,000+ orders handled every day. Hyperlocal, same-day, and next-day
             delivery on our own dispatch platform.
           </p>
 
-          <div className="hero-fade mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <SpecularButton
               size="md"
               radius={999}
@@ -115,7 +82,36 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="hero-fade mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-2">
+          {/* Tracking bar */}
+          <form
+            onSubmit={handleTrack}
+            className="mt-10 max-w-md"
+            aria-label="Track a shipment"
+          >
+            <label htmlFor="hero-awb" className="u-data block text-muted">
+              Track a shipment
+            </label>
+            <div className="mt-3 flex items-stretch overflow-hidden rounded-full border border-ink/15 bg-white/80 shadow-[0_10px_30px_-18px_rgb(14_19_25/0.28)] backdrop-blur-sm focus-within:border-ink/40">
+              <input
+                id="hero-awb"
+                type="text"
+                inputMode="text"
+                autoComplete="off"
+                value={awb}
+                onChange={(e) => setAwb(e.target.value)}
+                placeholder="Enter AWB or order ID"
+                className="u-data min-w-0 flex-1 bg-transparent px-5 py-3 text-ink outline-none placeholder:text-ink/40"
+              />
+              <button
+                type="submit"
+                className="u-data shrink-0 bg-ink px-6 py-3 font-medium text-paper transition-colors hover:bg-ink/85"
+              >
+                Track &rarr;
+              </button>
+            </div>
+          </form>
+
+          <div className="mt-10 flex flex-wrap items-baseline gap-x-10 gap-y-2">
             <span className="u-display text-[clamp(1.1rem,2.2vw,1.55rem)] font-bold text-transit">
               Under 60 min
             </span>
@@ -128,7 +124,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-scene">
+        <div>
           <HeroScene />
         </div>
       </div>

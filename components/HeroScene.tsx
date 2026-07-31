@@ -1,83 +1,13 @@
 "use client";
 
-import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
-
 /**
  * Isometric delivery-hub scene, hand-drawn in SVG using the BMX palette.
  * Same category convention as Zippee/Blinkit/Zepto illustrated heroes,
  * entirely original composition and assets.
  */
 export default function HeroScene() {
-  const root = useRef<SVGSVGElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add(
-        {
-          motion: "(prefers-reduced-motion: no-preference)",
-          reduced: "(prefers-reduced-motion: reduce)",
-        },
-        (ctx) => {
-          if (ctx.conditions?.reduced) return;
-
-          // Wheels spin
-          gsap.to(".hs-wheel", {
-            rotation: 360,
-            duration: 2,
-            repeat: -1,
-            ease: "none",
-            transformOrigin: "center",
-            svgOrigin: "0 0",
-          });
-
-          // Motion lines pulse
-          gsap.to(".hs-motion", {
-            opacity: 0.15,
-            duration: 0.9,
-            stagger: 0.15,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut",
-          });
-
-          // Delivery pulse: bike → customer
-          gsap.timeline({ repeat: -1, defaults: { ease: "power2.inOut" } })
-            .set(".hs-pulse", { opacity: 0, x: 0, y: 0 })
-            .to(".hs-pulse", { opacity: 1, duration: 0.35 })
-            .to(".hs-pulse", { x: 220, y: 40, duration: 2.2 }, "<")
-            .to(".hs-pulse", { opacity: 0, duration: 0.3 }, "-=0.3")
-            .to({}, { duration: 1.4 });
-
-          // Package stack bobs gently
-          gsap.to(".hs-packages", {
-            y: -3,
-            duration: 2.4,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut",
-          });
-
-          // Worker slight sway
-          gsap.to(".hs-worker", {
-            rotation: 2,
-            duration: 2,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut",
-            transformOrigin: "50% 100%",
-          });
-        }
-      );
-      return () => mm.revert();
-    },
-    { scope: root }
-  );
-
   return (
     <svg
-      ref={root}
       viewBox="0 0 900 620"
       className="h-auto w-full"
       role="img"
