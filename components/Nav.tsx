@@ -30,11 +30,11 @@ export default function Nav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 overflow-hidden px-5 sm:px-8">
         <a href="/#top" className="flex shrink-0 items-center">
           <img
-            src="/logo.svg"
+            src="/logo-inverse.svg"
             alt="BM Xpress"
             width={140}
             height={30}
-            className="h-7 w-auto brightness-0 invert"
+            className="h-7 w-auto"
           />
         </a>
 
