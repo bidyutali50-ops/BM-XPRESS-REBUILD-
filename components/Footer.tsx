@@ -33,6 +33,17 @@ const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/bmxpress" },
 ];
 
+/** Government / industry credential badges. Add more as they arrive. */
+const BADGES = [
+  {
+    name: "Startup India",
+    src: "/badges/startup-india.png",
+    href: "https://www.startupindia.gov.in/",
+    width: 186,
+    height: 52,
+  },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-paper-2">
@@ -70,6 +81,31 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8">
+              <p className="u-eyebrow text-muted">Recognitions</p>
+              <div className="mt-3 flex flex-wrap items-center gap-6">
+                {BADGES.map((b) => (
+                  <a
+                    key={b.name}
+                    href={b.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${b.name} — visit programme site`}
+                    className="inline-flex items-center opacity-90 transition-opacity hover:opacity-100"
+                  >
+                    <img
+                      src={b.src}
+                      alt={b.name}
+                      width={b.width}
+                      height={b.height}
+                      className="h-9 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {COLUMNS.map((col) => (

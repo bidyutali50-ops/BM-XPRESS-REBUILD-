@@ -14,7 +14,6 @@ import Onboarding from "@/components/Onboarding";
 import TrustedBy from "@/components/TrustedBy";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
-import Credentials from "@/components/Credentials";
 import Footer from "@/components/Footer";
 
 export default function Page() {
@@ -38,7 +37,6 @@ export default function Page() {
         <FAQ />
         <FinalCTA />
       </main>
-      <Credentials />
       <Footer />
     </>
   );
