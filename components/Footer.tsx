@@ -39,8 +39,8 @@ const BADGES = [
     name: "Startup India",
     src: "/badges/startup-india.png",
     href: "https://www.startupindia.gov.in/",
-    width: 186,
-    height: 52,
+    width: 541,
+    height: 369,
   },
 ];
 
@@ -99,7 +99,7 @@ export default function Footer() {
                       alt={b.name}
                       width={b.width}
                       height={b.height}
-                      className="h-9 w-auto"
+                      className="h-14 w-auto"
                       loading="lazy"
                     />
                   </a>
