@@ -41,18 +41,20 @@ export default function Hero() {
               aria-hidden="true"
             />
             <span className="u-data text-ink/70">
-              Live network across West Bengal
+              Live network
             </span>
           </span>
 
-          <h1 className="u-display mt-7 text-[clamp(2.7rem,7vw,5rem)] leading-[0.94] tracking-tight">
-            <span className="block">Bengal, delivered</span>
-            <span className="block text-delivered">same day.</span>
+          <h1 className="u-display mt-7 max-w-2xl text-[clamp(2.1rem,5vw,3.6rem)] leading-[1.02] tracking-tight">
+            India&rsquo;s trusted{" "}
+            <span className="text-delivered">last-mile delivery partner.</span>
           </h1>
 
-          <p className="mt-7 max-w-lg text-[1.05rem] leading-relaxed text-ink/70">
-            3,000+ orders handled every day. Hyperlocal, same-day, and next-day
-            delivery on our own dispatch platform.
+          <p className="mt-7 max-w-xl text-[1.05rem] leading-relaxed text-ink/70">
+            BM Xpress provides technology-driven last-mile delivery, hyperlocal
+            fulfilment, dedicated fleets, and enterprise logistics solutions that
+            help businesses deliver faster, reduce costs, and scale with
+            confidence.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
