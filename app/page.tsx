@@ -38,6 +38,7 @@ export default function Page() {
         <FAQ />
         <FinalCTA />
       </main>
+      <Credentials />
       <Footer />
     </>
   );
