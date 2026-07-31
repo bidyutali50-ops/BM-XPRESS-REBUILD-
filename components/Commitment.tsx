@@ -138,8 +138,8 @@ type Card = {
  * Founder-confirmed 2026-07-31:
  * - On-time rate: measured above 90% across all shipments — display as "90%+"
  * - Under 60 min: real hyperlocal SLA committed to clients
- * - Ground and air: real capability, air is in partnership with a named
- *   carrier (name to be filled in when confirmed)
+ * - Ground and air: real capability, air handled in partnership with
+ *   Blue Dart Aviation
  */
 const CARDS: Card[] = [
   {
@@ -152,7 +152,7 @@ const CARDS: Card[] = [
     icon: <NetworkAirIcon />,
     state: "assigned",
     title: "Ground and air",
-    body: "Bengal-wide ground network for last-mile delivery, with air freight for time-critical or long-haul dispatch, in partnership with a licensed cargo carrier.",
+    body: "Bengal-wide ground network for last-mile delivery, with air freight for time-critical or long-haul dispatch — in partnership with Blue Dart Aviation.",
   },
   {
     icon: <ShieldCheckIcon />,
