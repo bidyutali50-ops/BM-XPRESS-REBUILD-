@@ -135,11 +135,11 @@ type Card = {
 };
 
 /**
- * TODO: verify these claims before this section ships to clients.
- * - "97% on-time" must be a measured figure, not a target
- * - "Ground and air" implies a real air-freight capability. If air
- *   is via a partner (e.g. Blue Dart aviation, IndiGo Cargo), name
- *   the partner in the body copy for credibility.
+ * Founder-confirmed 2026-07-31:
+ * - On-time rate: measured above 90% across all shipments — display as "90%+"
+ * - Under 60 min: real hyperlocal SLA committed to clients
+ * - Ground and air: real capability, air is in partnership with a named
+ *   carrier (name to be filled in when confirmed)
  */
 const CARDS: Card[] = [
   {
@@ -152,15 +152,15 @@ const CARDS: Card[] = [
     icon: <NetworkAirIcon />,
     state: "assigned",
     title: "Ground and air",
-    body: "Bengal-wide ground network for last-mile delivery, with air freight for time-critical or long-haul dispatch.",
+    body: "Bengal-wide ground network for last-mile delivery, with air freight for time-critical or long-haul dispatch, in partnership with a licensed cargo carrier.",
   },
   {
     icon: <ShieldCheckIcon />,
     state: "delivered",
-    big: "97%",
-    bigCount: 97,
+    big: "90%+",
+    bigCount: 90,
     title: "On-time delivery",
-    body: "Measured across all shipments. Late deliveries follow the SLA credit cycle in your contract.",
+    body: "Above 90% across all shipments. Late deliveries follow the SLA credit cycle in your contract.",
   },
   {
     icon: <RadarIcon />,
@@ -190,7 +190,7 @@ export default function Commitment() {
             gsap.set([...heads, ...cards], { opacity: 1, y: 0, scale: 1, rotateX: 0 });
             if (counter) {
               counter.textContent =
-                (Number(counter.dataset.count) || 97).toString() + "%";
+                (Number(counter.dataset.count) || 90).toString() + "%+";
             }
             return;
           }
@@ -216,7 +216,7 @@ export default function Commitment() {
           });
 
           if (counter) {
-            const end = Number(counter.dataset.count) || 97;
+            const end = Number(counter.dataset.count) || 90;
             const obj = { v: 0 };
             gsap.to(obj, {
               v: end,
@@ -225,6 +225,9 @@ export default function Commitment() {
               scrollTrigger: { trigger: counter, start: "top 85%", once: true },
               onUpdate: () => {
                 counter.textContent = Math.round(obj.v).toString() + "%";
+              },
+              onComplete: () => {
+                counter.textContent = end.toString() + "%+";
               },
             });
           }
