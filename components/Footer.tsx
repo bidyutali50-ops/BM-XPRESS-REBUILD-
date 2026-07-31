@@ -42,9 +42,9 @@ export default function Footer() {
             <img
               src="/logo.svg"
               alt="BM Xpress"
-              width={140}
-              height={30}
-              className="h-8 w-auto"
+              width={186}
+              height={40}
+              className="h-10 w-auto"
             />
             <p className="mt-3 max-w-xs text-[0.9rem] leading-relaxed text-ink/65">
               Hyperlocal and last-mile delivery across West Bengal, on our own platform and

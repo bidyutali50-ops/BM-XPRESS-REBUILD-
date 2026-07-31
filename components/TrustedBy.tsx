@@ -27,8 +27,8 @@ export default function TrustedBy() {
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const track = root.current!.querySelector<HTMLElement>(".tb-track")!;
 
-        // Slower now because there are more logos in a single loop.
-        // Same-speed with 9 items would rush past too fast to read.
+        // Continuous scroll — no pause on hover. The user asked for the
+        // client marquee to be uninterruptible.
         const loop = gsap.to(track, {
           xPercent: -33.3333,
           duration: 40,
@@ -36,15 +36,7 @@ export default function TrustedBy() {
           repeat: -1,
         });
 
-        const slow = () => gsap.to(loop, { timeScale: 0, duration: 0.4 });
-        const resume = () => gsap.to(loop, { timeScale: 1, duration: 0.4 });
-
-        root.current!.addEventListener("pointerenter", slow);
-        root.current!.addEventListener("pointerleave", resume);
-
         return () => {
-          root.current?.removeEventListener("pointerenter", slow);
-          root.current?.removeEventListener("pointerleave", resume);
           loop.kill();
         };
       });
