@@ -39,7 +39,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 md:grid-cols-[1.3fr_repeat(3,1fr)] md:gap-8">
           <div>
-            <p className="u-display text-xl">BM Xpress</p>
+            <img
+              src="/logo.svg"
+              alt="BM Xpress"
+              width={140}
+              height={30}
+              className="h-8 w-auto"
+            />
             <p className="mt-3 max-w-xs text-[0.9rem] leading-relaxed text-ink/65">
               Hyperlocal and last-mile delivery across West Bengal, on our own platform and
               our own rider network.

@@ -28,9 +28,14 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 isolate border-b border-white/6 bg-ink text-paper">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 overflow-hidden px-5 sm:px-8">
-        <a href="/#top" className="flex shrink-0 items-baseline gap-2">
-          <span className="u-display text-xl">BM Xpress</span>
-          <span className="u-data hidden text-paper/45 sm:inline">BMX</span>
+        <a href="/#top" className="flex shrink-0 items-center">
+          <img
+            src="/logo.svg"
+            alt="BM Xpress"
+            width={140}
+            height={30}
+            className="h-7 w-auto brightness-0 invert"
+          />
         </a>
 
         <div className="hidden lg:block">

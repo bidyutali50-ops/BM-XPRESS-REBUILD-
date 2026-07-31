@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 120">
+  <rect width="120" height="120" rx="24" fill="#0B1220"></rect>
+  <g transform="translate(20,40)">
+    <polygon points="0,0 14,0 34,20 14,40 0,40 20,20" fill="#FF4B2B" opacity="0.55"></polygon>
+    <polygon points="20,0 34,0 54,20 34,40 20,40 40,20" fill="#FFFFFF" opacity="0.85"></polygon>
+    <polygon points="40,0 54,0 74,20 54,40 40,40 60,20" fill="#FF4B2B"></polygon>
+  </g>
+  <text x="150" y="80" font-family="Archivo Black, Arial Black, sans-serif" font-size="60" fill="#0B1220">BM <tspan fill="#FF4B2B">Xpress</tspan></text>
+</svg>
