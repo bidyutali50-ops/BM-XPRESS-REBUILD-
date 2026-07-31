@@ -159,7 +159,7 @@ export default function Onboarding() {
                   {s.n}
                 </span>
                 <span
-                  className="flex size-11 items-center justify-center rounded-[12px] p-2.5"
+                  className="flex size-12 items-center justify-center rounded-[14px] p-3"
                   style={{
                     background: `color-mix(in oklab, var(--color-${s.state}) 14%, #ffffff)`,
                     color: `var(--color-${s.state})`,

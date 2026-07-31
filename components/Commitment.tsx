@@ -275,7 +275,7 @@ export default function Commitment() {
           {CARDS.map((card) => (
             <article
               key={card.title}
-              className="cmt-card group relative flex flex-col overflow-hidden rounded-[16px] border border-paper-2 bg-white p-6 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgb(14_19_25/0.22)]"
+              className="cmt-card group relative flex h-full flex-col overflow-hidden rounded-[16px] border border-paper-2 bg-white p-6 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgb(14_19_25/0.22)]"
             >
               <span
                 aria-hidden="true"
@@ -284,7 +284,7 @@ export default function Commitment() {
               />
 
               <div
-                className="cmt-icon mb-5 flex size-14 items-center justify-center rounded-[14px] p-3"
+                className="cmt-icon mb-5 flex size-12 items-center justify-center rounded-[14px] p-3"
                 style={{
                   background: `color-mix(in oklab, var(--color-${card.state}) 15%, #ffffff)`,
                 }}

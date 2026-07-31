@@ -222,7 +222,7 @@ export default function Fulfilment() {
             <article
               key={f.title}
               data-reveal
-              className="group relative flex flex-col rounded-[16px] border border-paper-2 bg-white p-6 transition-shadow duration-300 hover:shadow-[0_18px_44px_-18px_rgb(14_19_25/0.18)]"
+              className="group relative flex h-full flex-col rounded-[16px] border border-paper-2 bg-white p-6 transition-shadow duration-300 hover:shadow-[0_18px_44px_-18px_rgb(14_19_25/0.18)]"
             >
               <span
                 aria-hidden="true"
@@ -231,7 +231,7 @@ export default function Fulfilment() {
               />
 
               <div
-                className="flex size-11 items-center justify-center rounded-[12px] p-2.5"
+                className="flex size-12 items-center justify-center rounded-[14px] p-3"
                 style={{
                   background: `color-mix(in oklab, var(--color-${f.state}) 14%, #ffffff)`,
                   color: `var(--color-${f.state})`,

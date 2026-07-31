@@ -185,7 +185,7 @@ export default function Stats() {
           {TIERS.map((tier) => (
             <article
               key={tier.title}
-              className="stat-card group relative flex flex-col overflow-hidden rounded-[16px] border border-paper-2 bg-white p-6 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgb(14_19_25/0.22)] sm:p-7"
+              className="stat-card group relative flex h-full flex-col overflow-hidden rounded-[16px] border border-paper-2 bg-white p-6 transition-shadow duration-500 hover:shadow-[0_20px_50px_-20px_rgb(14_19_25/0.22)] sm:p-7"
             >
               <span
                 aria-hidden="true"
@@ -194,7 +194,7 @@ export default function Stats() {
               />
 
               <div
-                className="stat-icon mb-5 flex size-14 items-center justify-center rounded-[14px] p-3"
+                className="stat-icon mb-5 flex size-12 items-center justify-center rounded-[14px] p-3"
                 style={{
                   background: `color-mix(in oklab, var(--color-${tier.state}) 15%, #ffffff)`,
                 }}

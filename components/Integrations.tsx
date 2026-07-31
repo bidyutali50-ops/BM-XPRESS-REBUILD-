@@ -251,7 +251,7 @@ export default function Integrations() {
             const Body = (
               <>
                 <div
-                  className="int-icon flex size-11 items-center justify-center rounded-[12px] p-2.5"
+                  className="int-icon flex size-12 items-center justify-center rounded-[14px] p-3"
                   style={{
                     background: `color-mix(in oklab, var(--color-${w.state}) 15%, #ffffff)`,
                   }}
