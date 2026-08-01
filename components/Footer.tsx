@@ -12,7 +12,6 @@ const COLUMNS = [
     head: "Company",
     links: [
       { label: "How it runs", href: "/#lifecycle" },
-      { label: "Network", href: "/#network" },
       { label: "Getting started", href: "/#onboarding" },
     ],
   },

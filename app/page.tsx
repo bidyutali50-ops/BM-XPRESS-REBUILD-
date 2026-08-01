@@ -9,7 +9,6 @@ import Fulfilment from "@/components/Fulfilment";
 import Industries from "@/components/Industries";
 import Testimonials from "@/components/Testimonials";
 import Lifecycle from "@/components/Lifecycle";
-import Network from "@/components/Network";
 import Integrations from "@/components/Integrations";
 import Onboarding from "@/components/Onboarding";
 import TrustedBy from "@/components/TrustedBy";
@@ -32,7 +31,6 @@ export default function Page() {
         <Fulfilment />
         <Industries />
         <Lifecycle />
-        <Network />
         <Integrations />
         <Onboarding />
         <Testimonials />
