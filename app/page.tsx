@@ -2,6 +2,7 @@ import LifecycleRail from "@/components/LifecycleRail";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
+import Scale from "@/components/Scale";
 import Commitment from "@/components/Commitment";
 import Services from "@/components/Services";
 import Fulfilment from "@/components/Fulfilment";
@@ -25,6 +26,7 @@ export default function Page() {
         <Hero />
         <TrustedBy />
         <Stats />
+        <Scale />
         <Commitment />
         <Services />
         <Fulfilment />

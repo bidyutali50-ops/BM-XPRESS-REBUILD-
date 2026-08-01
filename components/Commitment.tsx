@@ -136,10 +136,12 @@ type Card = {
 
 /**
  * Founder-confirmed 2026-07-31:
- * - On-time rate: measured above 90% across all shipments — display as "90%+"
+ * - On-time rate: measured at 94–95% across all shipments — display as "95%"
  * - Under 60 min: real hyperlocal SLA committed to clients
- * - Ground and air: real capability, air handled in partnership with
- *   Blue Dart Aviation
+ * - Ground and air: air handled in partnership with Blue Dart Aviation
+ * - 200+ pincodes served (see Scale section)
+ * - 35+ hub network including partner/franchise/agent locations (see Scale)
+ * - 24/7 operations: riders and CS desk both round-the-clock (see Scale)
  */
 const CARDS: Card[] = [
   {
@@ -157,10 +159,10 @@ const CARDS: Card[] = [
   {
     icon: <ShieldCheckIcon />,
     state: "delivered",
-    big: "90%+",
-    bigCount: 90,
+    big: "95%",
+    bigCount: 95,
     title: "On-time delivery",
-    body: "Above 90% across all shipments. Late deliveries follow the SLA credit cycle in your contract.",
+    body: "Currently measured at 94–95% across all shipments. Late deliveries follow the SLA credit cycle in your contract.",
   },
   {
     icon: <RadarIcon />,
@@ -190,7 +192,7 @@ export default function Commitment() {
             gsap.set([...heads, ...cards], { opacity: 1, y: 0, scale: 1, rotateX: 0 });
             if (counter) {
               counter.textContent =
-                (Number(counter.dataset.count) || 90).toString() + "%+";
+                (Number(counter.dataset.count) || 95).toString() + "%";
             }
             return;
           }
@@ -226,9 +228,7 @@ export default function Commitment() {
               onUpdate: () => {
                 counter.textContent = Math.round(obj.v).toString() + "%";
               },
-              onComplete: () => {
-                counter.textContent = end.toString() + "%+";
-              },
+
             });
           }
 
